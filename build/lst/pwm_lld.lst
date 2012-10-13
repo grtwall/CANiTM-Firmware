@@ -1,0 +1,3696 @@
+ARM GAS  /tmp/ccJAudan.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 2
+  11              		.eabi_attribute 18, 4
+  12              		.thumb
+  13              		.file	"pwm_lld.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.VectorB8,"ax",%progbits
+  18              		.align	2
+  19              		.p2align 4,,15
+  20              		.global	VectorB8
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	VectorB8, %function
+  24              	VectorB8:
+  25              	.LFB119:
+  26              		.file 1 "../../os/hal/platforms/STM32/pwm_lld.c"
+  27              		.loc 1 227 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 14, -4
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 4, -12
+  38              		.cfi_offset 3, -16
+  39              	.LBB4:
+  40              	.LBB5:
+  41              		.loc 1 107 0
+  42 0002 174D     		ldr	r5, .L12
+  43 0004 2B69     		ldr	r3, [r5, #16]
+  44 0006 1A8A     		ldrh	r2, [r3, #16]
+  45 0008 9C89     		ldrh	r4, [r3, #12]
+  46 000a A4B2     		uxth	r4, r4
+  47 000c 1440     		ands	r4, r4, r2
+  48              	.LVL1:
+  49              		.loc 1 108 0
+  50 000e E243     		mvns	r2, r4
+  51 0010 92B2     		uxth	r2, r2
+  52 0012 1A82     		strh	r2, [r3, #16]	@ movhi
+  53              		.loc 1 109 0
+  54 0014 A307     		lsls	r3, r4, #30
+  55 0016 1ED4     		bmi	.L8
+  56              	.L2:
+  57              		.loc 1 111 0
+ARM GAS  /tmp/ccJAudan.s 			page 2
+
+
+  58 0018 6007     		lsls	r0, r4, #29
+  59 001a 17D4     		bmi	.L9
+  60              	.L3:
+  61              		.loc 1 113 0
+  62 001c 2107     		lsls	r1, r4, #28
+  63 001e 10D4     		bmi	.L10
+  64              	.L4:
+  65              		.loc 1 115 0
+  66 0020 E206     		lsls	r2, r4, #27
+  67 0022 09D4     		bmi	.L11
+  68              	.L5:
+  69              		.loc 1 117 0
+  70 0024 E307     		lsls	r3, r4, #31
+  71 0026 03D5     		bpl	.L6
+  72              		.loc 1 118 0
+  73 0028 6B68     		ldr	r3, [r5, #4]
+  74 002a 0D48     		ldr	r0, .L12
+  75 002c 9B68     		ldr	r3, [r3, #8]
+  76 002e 9847     		blx	r3
+  77              	.L6:
+  78              	.LBE5:
+  79              	.LBE4:
+  80              		.loc 1 234 0
+  81 0030 BDE83840 		pop	{r3, r4, r5, lr}
+  82              		.loc 1 233 0
+  83 0034 FFF7FEBF 		b	_port_irq_epilogue
+  84              	.L11:
+  85              	.LBB7:
+  86              	.LBB6:
+  87              		.loc 1 116 0
+  88 0038 6B68     		ldr	r3, [r5, #4]
+  89 003a 0948     		ldr	r0, .L12
+  90 003c 9B6A     		ldr	r3, [r3, #40]
+  91 003e 9847     		blx	r3
+  92 0040 F0E7     		b	.L5
+  93              	.L10:
+  94              		.loc 1 114 0
+  95 0042 6B68     		ldr	r3, [r5, #4]
+  96 0044 0648     		ldr	r0, .L12
+  97 0046 1B6A     		ldr	r3, [r3, #32]
+  98 0048 9847     		blx	r3
+  99 004a E9E7     		b	.L4
+ 100              	.L9:
+ 101              		.loc 1 112 0
+ 102 004c 6B68     		ldr	r3, [r5, #4]
+ 103 004e 0448     		ldr	r0, .L12
+ 104 0050 9B69     		ldr	r3, [r3, #24]
+ 105 0052 9847     		blx	r3
+ 106 0054 E2E7     		b	.L3
+ 107              	.L8:
+ 108              		.loc 1 110 0
+ 109 0056 6B68     		ldr	r3, [r5, #4]
+ 110 0058 2846     		mov	r0, r5
+ 111 005a 1B69     		ldr	r3, [r3, #16]
+ 112 005c 9847     		blx	r3
+ 113 005e DBE7     		b	.L2
+ 114              	.L13:
+ARM GAS  /tmp/ccJAudan.s 			page 3
+
+
+ 115              		.align	2
+ 116              	.L12:
+ 117 0060 00000000 		.word	.LANCHOR0
+ 118              	.LBE6:
+ 119              	.LBE7:
+ 120              		.cfi_endproc
+ 121              	.LFE119:
+ 122              		.size	VectorB8, .-VectorB8
+ 123 0064 AFF30080 		.section	.text.pwm_lld_init,"ax",%progbits
+ 123      AFF30080 
+ 123      AFF30080 
+ 124              		.align	2
+ 125              		.p2align 4,,15
+ 126              		.global	pwm_lld_init
+ 127              		.thumb
+ 128              		.thumb_func
+ 129              		.type	pwm_lld_init, %function
+ 130              	pwm_lld_init:
+ 131              	.LFB120:
+ 132              		.loc 1 319 0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 10B5     		push	{r4, lr}
+ 137              	.LCFI1:
+ 138              		.cfi_def_cfa_offset 8
+ 139              		.cfi_offset 14, -4
+ 140              		.cfi_offset 4, -8
+ 141              		.loc 1 341 0
+ 142 0002 40F20004 		movw	r4, #:lower16:.LANCHOR0
+ 143 0006 C0F20004 		movt	r4, #:upper16:.LANCHOR0
+ 144 000a 2046     		mov	r0, r4
+ 145 000c FFF7FEFF 		bl	pwmObjectInit
+ 146              		.loc 1 342 0
+ 147 0010 4FF40063 		mov	r3, #2048
+ 148 0014 C4F20003 		movt	r3, 16384
+ 149 0018 2361     		str	r3, [r4, #16]
+ 150              		.loc 1 356 0
+ 151 001a 10BD     		pop	{r4, pc}
+ 152              		.cfi_endproc
+ 153              	.LFE120:
+ 154              		.size	pwm_lld_init, .-pwm_lld_init
+ 155 001c AFF30080 		.section	.text.pwm_lld_start,"ax",%progbits
+ 156              		.align	2
+ 157              		.p2align 4,,15
+ 158              		.global	pwm_lld_start
+ 159              		.thumb
+ 160              		.thumb_func
+ 161              		.type	pwm_lld_start, %function
+ 162              	pwm_lld_start:
+ 163              	.LFB121:
+ 164              		.loc 1 367 0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 0
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168              	.LVL2:
+ 169              		.loc 1 371 0
+ARM GAS  /tmp/ccJAudan.s 			page 4
+
+
+ 170 0000 0378     		ldrb	r3, [r0, #0]	@ zero_extendqisi2
+ 171 0002 012B     		cmp	r3, #1
+ 172              		.loc 1 367 0
+ 173 0004 70B5     		push	{r4, r5, r6, lr}
+ 174              	.LCFI2:
+ 175              		.cfi_def_cfa_offset 16
+ 176              		.cfi_offset 14, -4
+ 177              		.cfi_offset 6, -8
+ 178              		.cfi_offset 5, -12
+ 179              		.cfi_offset 4, -16
+ 180              		.loc 1 367 0
+ 181 0006 0446     		mov	r4, r0
+ 182              		.loc 1 371 0
+ 183 0008 5FD0     		beq	.L33
+ 184              		.loc 1 446 0
+ 185 000a 0369     		ldr	r3, [r0, #16]
+ 186 000c 0022     		movs	r2, #0
+ 187 000e 1A80     		strh	r2, [r3, #0]	@ movhi
+ 188              		.loc 1 447 0
+ 189 0010 9A81     		strh	r2, [r3, #12]	@ movhi
+ 190              		.loc 1 448 0
+ 191 0012 1A82     		strh	r2, [r3, #16]	@ movhi
+ 192              		.loc 1 449 0
+ 193 0014 5A63     		str	r2, [r3, #52]
+ 194              		.loc 1 450 0
+ 195 0016 9A63     		str	r2, [r3, #56]
+ 196              		.loc 1 451 0
+ 197 0018 DA63     		str	r2, [r3, #60]
+ 198              		.loc 1 452 0
+ 199 001a 1A64     		str	r2, [r3, #64]
+ 200              		.loc 1 453 0
+ 201 001c 5A62     		str	r2, [r3, #36]
+ 202              	.LVL3:
+ 203              	.L18:
+ 204              		.loc 1 457 0
+ 205 001e 6168     		ldr	r1, [r4, #4]
+ 206              	.LVL4:
+ 207 0020 E668     		ldr	r6, [r4, #12]
+ 208 0022 0D68     		ldr	r5, [r1, #0]
+ 209              		.loc 1 462 0
+ 210 0024 2489     		ldrh	r4, [r4, #8]
+ 211              	.LVL5:
+ 212              		.loc 1 467 0
+ 213 0026 CA68     		ldr	r2, [r1, #12]
+ 214              		.loc 1 463 0
+ 215 0028 888D     		ldrh	r0, [r1, #44]
+ 216              		.loc 1 457 0
+ 217 002a B6FBF5F5 		udiv	r5, r6, r5
+ 218 002e 013D     		subs	r5, r5, #1
+ 219              		.loc 1 462 0
+ 220 0030 013C     		subs	r4, r4, #1
+ 221              		.loc 1 467 0
+ 222 0032 02F00F02 		and	r2, r2, #15
+ 223              		.loc 1 461 0
+ 224 0036 ADB2     		uxth	r5, r5
+ 225              		.loc 1 462 0
+ 226 0038 A4B2     		uxth	r4, r4
+ARM GAS  /tmp/ccJAudan.s 			page 5
+
+
+ 227              		.loc 1 467 0
+ 228 003a 012A     		cmp	r2, #1
+ 229              		.loc 1 461 0
+ 230 003c 1D85     		strh	r5, [r3, #40]	@ movhi
+ 231              		.loc 1 462 0
+ 232 003e DC62     		str	r4, [r3, #44]
+ 233              		.loc 1 463 0
+ 234 0040 9880     		strh	r0, [r3, #4]	@ movhi
+ 235              	.LVL6:
+ 236              		.loc 1 467 0
+ 237 0042 03D0     		beq	.L19
+ 238              		.loc 1 466 0
+ 239 0044 022A     		cmp	r2, #2
+ 240 0046 0CBF     		ite	eq
+ 241 0048 0322     		moveq	r2, #3
+ 242 004a 0022     		movne	r2, #0
+ 243              	.L19:
+ 244              	.LVL7:
+ 245              		.loc 1 475 0
+ 246 004c 4869     		ldr	r0, [r1, #20]
+ 247 004e 00F00F00 		and	r0, r0, #15
+ 248 0052 0128     		cmp	r0, #1
+ 249 0054 1ED0     		beq	.L23
+ 250 0056 0228     		cmp	r0, #2
+ 251 0058 1AD0     		beq	.L34
+ 252              		.loc 1 483 0
+ 253 005a C869     		ldr	r0, [r1, #28]
+ 254 005c 00F00F00 		and	r0, r0, #15
+ 255 0060 0128     		cmp	r0, #1
+ 256 0062 1ED0     		beq	.L26
+ 257              	.LVL8:
+ 258              	.L37:
+ 259 0064 0228     		cmp	r0, #2
+ 260 0066 2BD0     		beq	.L35
+ 261              	.LVL9:
+ 262              		.loc 1 491 0
+ 263 0068 486A     		ldr	r0, [r1, #36]
+ 264 006a 00F00F00 		and	r0, r0, #15
+ 265 006e 0128     		cmp	r0, #1
+ 266 0070 1ED0     		beq	.L29
+ 267              	.LVL10:
+ 268              	.L38:
+ 269 0072 0228     		cmp	r0, #2
+ 270 0074 1FD0     		beq	.L36
+ 271              	.L28:
+ 272              	.LVL11:
+ 273              		.loc 1 538 0
+ 274 0076 8968     		ldr	r1, [r1, #8]
+ 275              	.LVL12:
+ 276              		.loc 1 536 0
+ 277 0078 1A84     		strh	r2, [r3, #32]	@ movhi
+ 278              		.loc 1 538 0
+ 279 007a 0A1C     		adds	r2, r1, #0
+ 280              	.LVL13:
+ 281 007c 18BF     		it	ne
+ 282 007e 0122     		movne	r2, #1
+ 283              		.loc 1 537 0
+ARM GAS  /tmp/ccJAudan.s 			page 6
+
+
+ 284 0080 0121     		movs	r1, #1
+ 285 0082 9982     		strh	r1, [r3, #20]	@ movhi
+ 286              		.loc 1 538 0
+ 287 0084 9A81     		strh	r2, [r3, #12]	@ movhi
+ 288              		.loc 1 539 0
+ 289 0086 0022     		movs	r2, #0
+ 290 0088 1A82     		strh	r2, [r3, #16]	@ movhi
+ 291              		.loc 1 548 0
+ 292 008a 8522     		movs	r2, #133
+ 293 008c 1A80     		strh	r2, [r3, #0]	@ movhi
+ 294              		.loc 1 549 0
+ 295 008e 70BD     		pop	{r4, r5, r6, pc}
+ 296              	.LVL14:
+ 297              	.L34:
+ 298              		.loc 1 477 0
+ 299 0090 42F02002 		orr	r2, r2, #32
+ 300              	.LVL15:
+ 301              	.L23:
+ 302              		.loc 1 483 0
+ 303 0094 C869     		ldr	r0, [r1, #28]
+ 304 0096 00F00F00 		and	r0, r0, #15
+ 305 009a 0128     		cmp	r0, #1
+ 306              		.loc 1 479 0
+ 307 009c 42F01002 		orr	r2, r2, #16
+ 308              	.LVL16:
+ 309              		.loc 1 483 0
+ 310 00a0 E0D1     		bne	.L37
+ 311              	.LVL17:
+ 312              	.L26:
+ 313              		.loc 1 487 0
+ 314 00a2 42F48072 		orr	r2, r2, #256
+ 315              	.LVL18:
+ 316              	.L39:
+ 317              		.loc 1 491 0
+ 318 00a6 486A     		ldr	r0, [r1, #36]
+ 319 00a8 00F00F00 		and	r0, r0, #15
+ 320 00ac 0128     		cmp	r0, #1
+ 321 00ae E0D1     		bne	.L38
+ 322              	.LVL19:
+ 323              	.L29:
+ 324              		.loc 1 495 0
+ 325 00b0 42F48052 		orr	r2, r2, #4096
+ 326              	.LVL20:
+ 327 00b4 DFE7     		b	.L28
+ 328              	.LVL21:
+ 329              	.L36:
+ 330              		.loc 1 493 0
+ 331 00b6 42F40052 		orr	r2, r2, #8192
+ 332              	.LVL22:
+ 333              		.loc 1 495 0
+ 334 00ba 42F48052 		orr	r2, r2, #4096
+ 335              	.LVL23:
+ 336 00be DAE7     		b	.L28
+ 337              	.LVL24:
+ 338              	.L35:
+ 339              		.loc 1 485 0
+ 340 00c0 42F40072 		orr	r2, r2, #512
+ARM GAS  /tmp/ccJAudan.s 			page 7
+
+
+ 341              	.LVL25:
+ 342              		.loc 1 487 0
+ 343 00c4 42F48072 		orr	r2, r2, #256
+ 344              	.LVL26:
+ 345 00c8 EDE7     		b	.L39
+ 346              	.LVL27:
+ 347              	.L33:
+ 348              		.loc 1 403 0
+ 349 00ca 104B     		ldr	r3, .L41
+ 350 00cc 9842     		cmp	r0, r3
+ 351 00ce 05D0     		beq	.L40
+ 352              	.LVL28:
+ 353              	.L17:
+ 354              		.loc 1 435 0
+ 355 00d0 2369     		ldr	r3, [r4, #16]
+ 356 00d2 46F66802 		movw	r2, #26728
+ 357 00d6 1A83     		strh	r2, [r3, #24]	@ movhi
+ 358              		.loc 1 439 0
+ 359 00d8 9A83     		strh	r2, [r3, #28]	@ movhi
+ 360 00da A0E7     		b	.L18
+ 361              	.L40:
+ 362              		.loc 1 404 0
+ 363 00dc 4FF46053 		mov	r3, #14336
+ 364 00e0 C4F20203 		movt	r3, 16386
+ 365              		.loc 1 406 0
+ 366 00e4 1E20     		movs	r0, #30
+ 367              		.loc 1 404 0
+ 368 00e6 1A6C     		ldr	r2, [r3, #64]
+ 369 00e8 42F00402 		orr	r2, r2, #4
+ 370 00ec 1A64     		str	r2, [r3, #64]
+ 371              		.loc 1 405 0
+ 372 00ee 1A6A     		ldr	r2, [r3, #32]
+ 373 00f0 42F00402 		orr	r2, r2, #4
+ 374 00f4 1A62     		str	r2, [r3, #32]
+ 375 00f6 0022     		movs	r2, #0
+ 376 00f8 1A62     		str	r2, [r3, #32]
+ 377              		.loc 1 406 0
+ 378 00fa 7021     		movs	r1, #112
+ 379 00fc FFF7FEFF 		bl	nvicEnableVector
+ 380              		.loc 1 408 0
+ 381 0100 4FF43D43 		mov	r3, #48384
+ 382 0104 C0F20153 		movt	r3, 1281
+ 383 0108 E360     		str	r3, [r4, #12]
+ 384 010a E1E7     		b	.L17
+ 385              	.L42:
+ 386              		.align	2
+ 387              	.L41:
+ 388 010c 00000000 		.word	.LANCHOR0
+ 389              		.cfi_endproc
+ 390              	.LFE121:
+ 391              		.size	pwm_lld_start, .-pwm_lld_start
+ 392              		.section	.text.pwm_lld_stop,"ax",%progbits
+ 393              		.align	2
+ 394              		.p2align 4,,15
+ 395              		.global	pwm_lld_stop
+ 396              		.thumb
+ 397              		.thumb_func
+ARM GAS  /tmp/ccJAudan.s 			page 8
+
+
+ 398              		.type	pwm_lld_stop, %function
+ 399              	pwm_lld_stop:
+ 400              	.LFB122:
+ 401              		.loc 1 558 0
+ 402              		.cfi_startproc
+ 403              		@ args = 0, pretend = 0, frame = 0
+ 404              		@ frame_needed = 0, uses_anonymous_args = 0
+ 405              	.LVL29:
+ 406 0000 08B5     		push	{r3, lr}
+ 407              	.LCFI3:
+ 408              		.cfi_def_cfa_offset 8
+ 409              		.cfi_offset 14, -4
+ 410              		.cfi_offset 3, -8
+ 411              		.loc 1 561 0
+ 412 0002 0378     		ldrb	r3, [r0, #0]	@ zero_extendqisi2
+ 413 0004 022B     		cmp	r3, #2
+ 414 0006 00D0     		beq	.L45
+ 415              	.LVL30:
+ 416              	.L43:
+ 417 0008 08BD     		pop	{r3, pc}
+ 418              	.LVL31:
+ 419              	.L45:
+ 420              		.loc 1 562 0
+ 421 000a 0369     		ldr	r3, [r0, #16]
+ 422 000c 0022     		movs	r2, #0
+ 423 000e 1A80     		strh	r2, [r3, #0]	@ movhi
+ 424              		.loc 1 563 0
+ 425 0010 9A81     		strh	r2, [r3, #12]	@ movhi
+ 426              		.loc 1 564 0
+ 427 0012 1A82     		strh	r2, [r3, #16]	@ movhi
+ 428              		.loc 1 589 0
+ 429 0014 074B     		ldr	r3, .L46
+ 430 0016 9842     		cmp	r0, r3
+ 431 0018 F6D1     		bne	.L43
+ 432              		.loc 1 590 0
+ 433 001a 1E20     		movs	r0, #30
+ 434              	.LVL32:
+ 435 001c FFF7FEFF 		bl	nvicDisableVector
+ 436              		.loc 1 591 0
+ 437 0020 4FF46053 		mov	r3, #14336
+ 438 0024 C4F20203 		movt	r3, 16386
+ 439 0028 1A6C     		ldr	r2, [r3, #64]
+ 440 002a 22F00402 		bic	r2, r2, #4
+ 441 002e 1A64     		str	r2, [r3, #64]
+ 442 0030 EAE7     		b	.L43
+ 443              	.L47:
+ 444 0032 00BF     		.align	2
+ 445              	.L46:
+ 446 0034 00000000 		.word	.LANCHOR0
+ 447              		.cfi_endproc
+ 448              	.LFE122:
+ 449              		.size	pwm_lld_stop, .-pwm_lld_stop
+ 450 0038 AFF30080 		.section	.text.pwm_lld_enable_channel,"ax",%progbits
+ 450      AFF30080 
+ 451              		.align	2
+ 452              		.p2align 4,,15
+ 453              		.global	pwm_lld_enable_channel
+ARM GAS  /tmp/ccJAudan.s 			page 9
+
+
+ 454              		.thumb
+ 455              		.thumb_func
+ 456              		.type	pwm_lld_enable_channel, %function
+ 457              	pwm_lld_enable_channel:
+ 458              	.LFB123:
+ 459              		.loc 1 624 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 0
+ 462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 463              		@ link register save eliminated.
+ 464              	.LVL33:
+ 465 0000 10B4     		push	{r4}
+ 466              	.LCFI4:
+ 467              		.cfi_def_cfa_offset 4
+ 468              		.cfi_offset 4, -4
+ 469              		.loc 1 629 0
+ 470 0002 4468     		ldr	r4, [r0, #4]
+ 471              		.loc 1 626 0
+ 472 0004 0369     		ldr	r3, [r0, #16]
+ 473              		.loc 1 629 0
+ 474 0006 04EBC100 		add	r0, r4, r1, lsl #3
+ 475              	.LVL34:
+ 476              		.loc 1 626 0
+ 477 000a 01F10C04 		add	r4, r1, #12
+ 478 000e 03EB8404 		add	r4, r3, r4, lsl #2
+ 479              		.loc 1 629 0
+ 480 0012 0069     		ldr	r0, [r0, #16]
+ 481              		.loc 1 626 0
+ 482 0014 6260     		str	r2, [r4, #4]
+ 483              		.loc 1 629 0
+ 484 0016 60B1     		cbz	r0, .L48
+ 485              	.LBB8:
+ 486              		.loc 1 630 0
+ 487 0018 9A89     		ldrh	r2, [r3, #12]
+ 488              	.LVL35:
+ 489              		.loc 1 633 0
+ 490 001a 0220     		movs	r0, #2
+ 491              		.loc 1 630 0
+ 492 001c 92B2     		uxth	r2, r2
+ 493              	.LVL36:
+ 494              		.loc 1 633 0
+ 495 001e 10FA01F1 		lsls	r1, r0, r1
+ 496              	.LVL37:
+ 497 0022 1142     		tst	r1, r2
+ 498 0024 05D1     		bne	.L48
+ 499              		.loc 1 634 0
+ 500 0026 89B2     		uxth	r1, r1
+ 501              		.loc 1 635 0
+ 502 0028 C843     		mvns	r0, r1
+ 503 002a 80B2     		uxth	r0, r0
+ 504              		.loc 1 634 0
+ 505 002c 1143     		orrs	r1, r1, r2
+ 506 002e 9981     		strh	r1, [r3, #12]	@ movhi
+ 507              		.loc 1 635 0
+ 508 0030 1882     		strh	r0, [r3, #16]	@ movhi
+ 509              	.LVL38:
+ 510              	.L48:
+ARM GAS  /tmp/ccJAudan.s 			page 10
+
+
+ 511              	.LBE8:
+ 512              		.loc 1 638 0
+ 513 0032 10BC     		pop	{r4}
+ 514 0034 7047     		bx	lr
+ 515              		.cfi_endproc
+ 516              	.LFE123:
+ 517              		.size	pwm_lld_enable_channel, .-pwm_lld_enable_channel
+ 518 0036 00BFAFF3 		.section	.text.pwm_lld_disable_channel,"ax",%progbits
+ 518      0080AFF3 
+ 518      0080
+ 519              		.align	2
+ 520              		.p2align 4,,15
+ 521              		.global	pwm_lld_disable_channel
+ 522              		.thumb
+ 523              		.thumb_func
+ 524              		.type	pwm_lld_disable_channel, %function
+ 525              	pwm_lld_disable_channel:
+ 526              	.LFB124:
+ 527              		.loc 1 652 0
+ 528              		.cfi_startproc
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531              		@ link register save eliminated.
+ 532              	.LVL39:
+ 533              		.loc 1 654 0
+ 534 0000 0369     		ldr	r3, [r0, #16]
+ 535 0002 01F10C02 		add	r2, r1, #12
+ 536 0006 03EB8202 		add	r2, r3, r2, lsl #2
+ 537 000a 0020     		movs	r0, #0
+ 538              	.LVL40:
+ 539 000c 5060     		str	r0, [r2, #4]
+ 540              		.loc 1 655 0
+ 541 000e 9A89     		ldrh	r2, [r3, #12]
+ 542 0010 0220     		movs	r0, #2
+ 543 0012 92B2     		uxth	r2, r2
+ 544 0014 10FA01F1 		lsls	r1, r0, r1
+ 545              	.LVL41:
+ 546 0018 22EA0101 		bic	r1, r2, r1
+ 547 001c 9981     		strh	r1, [r3, #12]	@ movhi
+ 548              		.loc 1 656 0
+ 549 001e 7047     		bx	lr
+ 550              		.cfi_endproc
+ 551              	.LFE124:
+ 552              		.size	pwm_lld_disable_channel, .-pwm_lld_disable_channel
+ 553              		.global	PWMD4
+ 554              		.section	.bss.PWMD4,"aw",%nobits
+ 555              		.align	2
+ 556              		.set	.LANCHOR0,. + 0
+ 557              		.type	PWMD4, %object
+ 558              		.size	PWMD4, 20
+ 559              	PWMD4:
+ 560 0000 00000000 		.space	20
+ 560      00000000 
+ 560      00000000 
+ 560      00000000 
+ 560      00000000 
+ 561              		.text
+ARM GAS  /tmp/ccJAudan.s 			page 11
+
+
+ 562              	.Letext0:
+ 563              		.file 2 "/home/craig/gcc/arm/lib/gcc/arm-none-eabi/4.6.2/../../../../arm-none-eabi/include/stdint.
+ 564              		.file 3 "../../os/hal/platforms/STM32F4xx/stm32f4xx.h"
+ 565              		.file 4 "../../os/hal/platforms/STM32/stm32.h"
+ 566              		.file 5 "../../os/hal/include/pwm.h"
+ 567              		.file 6 "../../os/hal/platforms/STM32/pwm_lld.h"
+ 568              		.file 7 "../../os/ports/common/ARMCMx/CMSIS/include/core_cm4.h"
+ 569              		.section	.debug_info,"",%progbits
+ 570              	.Ldebug_info0:
+ 571 0000 170A0000 		.4byte	0xa17
+ 572 0004 0200     		.2byte	0x2
+ 573 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 574 000a 04       		.byte	0x4
+ 575 000b 01       		.uleb128 0x1
+ 576 000c 81070000 		.4byte	.LASF186
+ 577 0010 01       		.byte	0x1
+ 578 0011 F1040000 		.4byte	.LASF187
+ 579 0015 24050000 		.4byte	.LASF188
+ 580 0019 00000000 		.4byte	0
+ 581 001d 00000000 		.4byte	0
+ 582 0021 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 583 0025 00000000 		.4byte	.Ldebug_line0
+ 584 0029 02       		.uleb128 0x2
+ 585 002a 04       		.byte	0x4
+ 586 002b 05       		.byte	0x5
+ 587 002c 696E7400 		.ascii	"int\000"
+ 588 0030 03       		.uleb128 0x3
+ 589 0031 04       		.byte	0x4
+ 590 0032 07       		.byte	0x7
+ 591 0033 ED020000 		.4byte	.LASF0
+ 592 0037 03       		.uleb128 0x3
+ 593 0038 01       		.byte	0x1
+ 594 0039 06       		.byte	0x6
+ 595 003a 73010000 		.4byte	.LASF1
+ 596 003e 04       		.uleb128 0x4
+ 597 003f 1D080000 		.4byte	.LASF4
+ 598 0043 02       		.byte	0x2
+ 599 0044 2A       		.byte	0x2a
+ 600 0045 49000000 		.4byte	0x49
+ 601 0049 03       		.uleb128 0x3
+ 602 004a 01       		.byte	0x1
+ 603 004b 08       		.byte	0x8
+ 604 004c CF050000 		.4byte	.LASF2
+ 605 0050 03       		.uleb128 0x3
+ 606 0051 02       		.byte	0x2
+ 607 0052 05       		.byte	0x5
+ 608 0053 16060000 		.4byte	.LASF3
+ 609 0057 04       		.uleb128 0x4
+ 610 0058 25020000 		.4byte	.LASF5
+ 611 005c 02       		.byte	0x2
+ 612 005d 36       		.byte	0x36
+ 613 005e 62000000 		.4byte	0x62
+ 614 0062 03       		.uleb128 0x3
+ 615 0063 02       		.byte	0x2
+ 616 0064 07       		.byte	0x7
+ 617 0065 4D060000 		.4byte	.LASF6
+ 618 0069 04       		.uleb128 0x4
+ARM GAS  /tmp/ccJAudan.s 			page 12
+
+
+ 619 006a C7050000 		.4byte	.LASF7
+ 620 006e 02       		.byte	0x2
+ 621 006f 4F       		.byte	0x4f
+ 622 0070 74000000 		.4byte	0x74
+ 623 0074 03       		.uleb128 0x3
+ 624 0075 04       		.byte	0x4
+ 625 0076 05       		.byte	0x5
+ 626 0077 CA010000 		.4byte	.LASF8
+ 627 007b 04       		.uleb128 0x4
+ 628 007c A7060000 		.4byte	.LASF9
+ 629 0080 02       		.byte	0x2
+ 630 0081 50       		.byte	0x50
+ 631 0082 86000000 		.4byte	0x86
+ 632 0086 03       		.uleb128 0x3
+ 633 0087 04       		.byte	0x4
+ 634 0088 07       		.byte	0x7
+ 635 0089 41030000 		.4byte	.LASF10
+ 636 008d 03       		.uleb128 0x3
+ 637 008e 08       		.byte	0x8
+ 638 008f 05       		.byte	0x5
+ 639 0090 65010000 		.4byte	.LASF11
+ 640 0094 03       		.uleb128 0x3
+ 641 0095 08       		.byte	0x8
+ 642 0096 07       		.byte	0x7
+ 643 0097 E6000000 		.4byte	.LASF12
+ 644 009b 05       		.uleb128 0x5
+ 645 009c 7B000000 		.4byte	0x7b
+ 646 00a0 03       		.uleb128 0x3
+ 647 00a1 01       		.byte	0x1
+ 648 00a2 08       		.byte	0x8
+ 649 00a3 FE060000 		.4byte	.LASF13
+ 650 00a7 06       		.uleb128 0x6
+ 651 00a8 4F040000 		.4byte	.LASF189
+ 652 00ac 01       		.byte	0x1
+ 653 00ad 03       		.byte	0x3
+ 654 00ae 8C       		.byte	0x8c
+ 655 00af E2020000 		.4byte	0x2e2
+ 656 00b3 07       		.uleb128 0x7
+ 657 00b4 4D070000 		.4byte	.LASF14
+ 658 00b8 72       		.sleb128 -14
+ 659 00b9 07       		.uleb128 0x7
+ 660 00ba 1E030000 		.4byte	.LASF15
+ 661 00be 74       		.sleb128 -12
+ 662 00bf 07       		.uleb128 0x7
+ 663 00c0 AF020000 		.4byte	.LASF16
+ 664 00c4 75       		.sleb128 -11
+ 665 00c5 07       		.uleb128 0x7
+ 666 00c6 BC060000 		.4byte	.LASF17
+ 667 00ca 76       		.sleb128 -10
+ 668 00cb 07       		.uleb128 0x7
+ 669 00cc 83030000 		.4byte	.LASF18
+ 670 00d0 7B       		.sleb128 -5
+ 671 00d1 07       		.uleb128 0x7
+ 672 00d2 B4070000 		.4byte	.LASF19
+ 673 00d6 7C       		.sleb128 -4
+ 674 00d7 07       		.uleb128 0x7
+ 675 00d8 CA020000 		.4byte	.LASF20
+ARM GAS  /tmp/ccJAudan.s 			page 13
+
+
+ 676 00dc 7E       		.sleb128 -2
+ 677 00dd 07       		.uleb128 0x7
+ 678 00de 1D040000 		.4byte	.LASF21
+ 679 00e2 7F       		.sleb128 -1
+ 680 00e3 07       		.uleb128 0x7
+ 681 00e4 31010000 		.4byte	.LASF22
+ 682 00e8 00       		.sleb128 0
+ 683 00e9 07       		.uleb128 0x7
+ 684 00ea 25000000 		.4byte	.LASF23
+ 685 00ee 01       		.sleb128 1
+ 686 00ef 07       		.uleb128 0x7
+ 687 00f0 71070000 		.4byte	.LASF24
+ 688 00f4 02       		.sleb128 2
+ 689 00f5 07       		.uleb128 0x7
+ 690 00f6 23010000 		.4byte	.LASF25
+ 691 00fa 03       		.sleb128 3
+ 692 00fb 07       		.uleb128 0x7
+ 693 00fc 83060000 		.4byte	.LASF26
+ 694 0100 04       		.sleb128 4
+ 695 0101 07       		.uleb128 0x7
+ 696 0102 E2080000 		.4byte	.LASF27
+ 697 0106 05       		.sleb128 5
+ 698 0107 07       		.uleb128 0x7
+ 699 0108 01080000 		.4byte	.LASF28
+ 700 010c 06       		.sleb128 6
+ 701 010d 07       		.uleb128 0x7
+ 702 010e 06090000 		.4byte	.LASF29
+ 703 0112 07       		.sleb128 7
+ 704 0113 07       		.uleb128 0x7
+ 705 0114 60060000 		.4byte	.LASF30
+ 706 0118 08       		.sleb128 8
+ 707 0119 07       		.uleb128 0x7
+ 708 011a AA040000 		.4byte	.LASF31
+ 709 011e 09       		.sleb128 9
+ 710 011f 07       		.uleb128 0x7
+ 711 0120 FD050000 		.4byte	.LASF32
+ 712 0124 0A       		.sleb128 10
+ 713 0125 07       		.uleb128 0x7
+ 714 0126 16090000 		.4byte	.LASF33
+ 715 012a 0B       		.sleb128 11
+ 716 012b 07       		.uleb128 0x7
+ 717 012c 28070000 		.4byte	.LASF34
+ 718 0130 0C       		.sleb128 12
+ 719 0131 07       		.uleb128 0x7
+ 720 0132 BF040000 		.4byte	.LASF35
+ 721 0136 0D       		.sleb128 13
+ 722 0137 07       		.uleb128 0x7
+ 723 0138 FA020000 		.4byte	.LASF36
+ 724 013c 0E       		.sleb128 14
+ 725 013d 07       		.uleb128 0x7
+ 726 013e 82040000 		.4byte	.LASF37
+ 727 0142 0F       		.sleb128 15
+ 728 0143 07       		.uleb128 0x7
+ 729 0144 F3010000 		.4byte	.LASF38
+ 730 0148 10       		.sleb128 16
+ 731 0149 07       		.uleb128 0x7
+ 732 014a 0C030000 		.4byte	.LASF39
+ARM GAS  /tmp/ccJAudan.s 			page 14
+
+
+ 733 014e 11       		.sleb128 17
+ 734 014f 07       		.uleb128 0x7
+ 735 0150 A0080000 		.4byte	.LASF40
+ 736 0154 12       		.sleb128 18
+ 737 0155 07       		.uleb128 0x7
+ 738 0156 B1030000 		.4byte	.LASF41
+ 739 015a 13       		.sleb128 19
+ 740 015b 07       		.uleb128 0x7
+ 741 015c 17000000 		.4byte	.LASF42
+ 742 0160 14       		.sleb128 20
+ 743 0161 07       		.uleb128 0x7
+ 744 0162 CF000000 		.4byte	.LASF43
+ 745 0166 15       		.sleb128 21
+ 746 0167 07       		.uleb128 0x7
+ 747 0168 C6080000 		.4byte	.LASF44
+ 748 016c 16       		.sleb128 22
+ 749 016d 07       		.uleb128 0x7
+ 750 016e 05020000 		.4byte	.LASF45
+ 751 0172 17       		.sleb128 23
+ 752 0173 07       		.uleb128 0x7
+ 753 0174 DD050000 		.4byte	.LASF46
+ 754 0178 18       		.sleb128 24
+ 755 0179 07       		.uleb128 0x7
+ 756 017a 5D040000 		.4byte	.LASF47
+ 757 017e 19       		.sleb128 25
+ 758 017f 07       		.uleb128 0x7
+ 759 0180 35060000 		.4byte	.LASF48
+ 760 0184 1A       		.sleb128 26
+ 761 0185 07       		.uleb128 0x7
+ 762 0186 2A040000 		.4byte	.LASF49
+ 763 018a 1B       		.sleb128 27
+ 764 018b 07       		.uleb128 0x7
+ 765 018c F7070000 		.4byte	.LASF50
+ 766 0190 1C       		.sleb128 28
+ 767 0191 07       		.uleb128 0x7
+ 768 0192 FC080000 		.4byte	.LASF51
+ 769 0196 1D       		.sleb128 29
+ 770 0197 07       		.uleb128 0x7
+ 771 0198 19010000 		.4byte	.LASF52
+ 772 019c 1E       		.sleb128 30
+ 773 019d 07       		.uleb128 0x7
+ 774 019e 71000000 		.4byte	.LASF53
+ 775 01a2 1F       		.sleb128 31
+ 776 01a3 07       		.uleb128 0x7
+ 777 01a4 86080000 		.4byte	.LASF54
+ 778 01a8 20       		.sleb128 32
+ 779 01a9 07       		.uleb128 0x7
+ 780 01aa D8070000 		.4byte	.LASF55
+ 781 01ae 21       		.sleb128 33
+ 782 01af 07       		.uleb128 0x7
+ 783 01b0 0C010000 		.4byte	.LASF56
+ 784 01b4 22       		.sleb128 34
+ 785 01b5 07       		.uleb128 0x7
+ 786 01b6 D6030000 		.4byte	.LASF57
+ 787 01ba 23       		.sleb128 35
+ 788 01bb 07       		.uleb128 0x7
+ 789 01bc B5040000 		.4byte	.LASF58
+ARM GAS  /tmp/ccJAudan.s 			page 15
+
+
+ 790 01c0 24       		.sleb128 36
+ 791 01c1 07       		.uleb128 0x7
+ 792 01c2 0C080000 		.4byte	.LASF59
+ 793 01c6 25       		.sleb128 37
+ 794 01c7 07       		.uleb128 0x7
+ 795 01c8 B0060000 		.4byte	.LASF60
+ 796 01cc 26       		.sleb128 38
+ 797 01cd 07       		.uleb128 0x7
+ 798 01ce E5070000 		.4byte	.LASF61
+ 799 01d2 27       		.sleb128 39
+ 800 01d3 07       		.uleb128 0x7
+ 801 01d4 C7030000 		.4byte	.LASF62
+ 802 01d8 28       		.sleb128 40
+ 803 01d9 07       		.uleb128 0x7
+ 804 01da FD000000 		.4byte	.LASF63
+ 805 01de 29       		.sleb128 41
+ 806 01df 07       		.uleb128 0x7
+ 807 01e0 61020000 		.4byte	.LASF64
+ 808 01e4 2A       		.sleb128 42
+ 809 01e5 07       		.uleb128 0x7
+ 810 01e6 04040000 		.4byte	.LASF65
+ 811 01ea 2B       		.sleb128 43
+ 812 01eb 07       		.uleb128 0x7
+ 813 01ec 84020000 		.4byte	.LASF66
+ 814 01f0 2C       		.sleb128 44
+ 815 01f1 07       		.uleb128 0x7
+ 816 01f2 37040000 		.4byte	.LASF67
+ 817 01f6 2D       		.sleb128 45
+ 818 01f7 07       		.uleb128 0x7
+ 819 01f8 BD020000 		.4byte	.LASF68
+ 820 01fc 2E       		.sleb128 46
+ 821 01fd 07       		.uleb128 0x7
+ 822 01fe 2E020000 		.4byte	.LASF69
+ 823 0202 2F       		.sleb128 47
+ 824 0203 07       		.uleb128 0x7
+ 825 0204 BD050000 		.4byte	.LASF70
+ 826 0208 30       		.sleb128 48
+ 827 0209 07       		.uleb128 0x7
+ 828 020a 73030000 		.4byte	.LASF71
+ 829 020e 31       		.sleb128 49
+ 830 020f 07       		.uleb128 0x7
+ 831 0210 A0040000 		.4byte	.LASF72
+ 832 0214 32       		.sleb128 50
+ 833 0215 07       		.uleb128 0x7
+ 834 0216 A1050000 		.4byte	.LASF73
+ 835 021a 33       		.sleb128 51
+ 836 021b 07       		.uleb128 0x7
+ 837 021c 56020000 		.4byte	.LASF74
+ 838 0220 34       		.sleb128 52
+ 839 0221 07       		.uleb128 0x7
+ 840 0222 2A060000 		.4byte	.LASF75
+ 841 0226 35       		.sleb128 53
+ 842 0227 07       		.uleb128 0x7
+ 843 0228 40020000 		.4byte	.LASF76
+ 844 022c 36       		.sleb128 54
+ 845 022d 07       		.uleb128 0x7
+ 846 022e 1E070000 		.4byte	.LASF77
+ARM GAS  /tmp/ccJAudan.s 			page 16
+
+
+ 847 0232 37       		.sleb128 55
+ 848 0233 07       		.uleb128 0x7
+ 849 0234 C6070000 		.4byte	.LASF78
+ 850 0238 38       		.sleb128 56
+ 851 0239 07       		.uleb128 0x7
+ 852 023a A9080000 		.4byte	.LASF79
+ 853 023e 39       		.sleb128 57
+ 854 023f 07       		.uleb128 0x7
+ 855 0240 94030000 		.4byte	.LASF80
+ 856 0244 3A       		.sleb128 58
+ 857 0245 07       		.uleb128 0x7
+ 858 0246 70040000 		.4byte	.LASF81
+ 859 024a 3B       		.sleb128 59
+ 860 024b 07       		.uleb128 0x7
+ 861 024c AB050000 		.4byte	.LASF82
+ 862 0250 3C       		.sleb128 60
+ 863 0251 07       		.uleb128 0x7
+ 864 0252 54040000 		.4byte	.LASF83
+ 865 0256 3D       		.sleb128 61
+ 866 0257 07       		.uleb128 0x7
+ 867 0258 17020000 		.4byte	.LASF84
+ 868 025c 3E       		.sleb128 62
+ 869 025d 07       		.uleb128 0x7
+ 870 025e D1040000 		.4byte	.LASF85
+ 871 0262 3F       		.sleb128 63
+ 872 0263 07       		.uleb128 0x7
+ 873 0264 2E000000 		.4byte	.LASF86
+ 874 0268 C000     		.sleb128 64
+ 875 026a 07       		.uleb128 0x7
+ 876 026b 7F010000 		.4byte	.LASF87
+ 877 026f C100     		.sleb128 65
+ 878 0271 07       		.uleb128 0x7
+ 879 0272 D4080000 		.4byte	.LASF88
+ 880 0276 C200     		.sleb128 66
+ 881 0278 07       		.uleb128 0x7
+ 882 0279 9B060000 		.4byte	.LASF89
+ 883 027d C300     		.sleb128 67
+ 884 027f 07       		.uleb128 0x7
+ 885 0280 72020000 		.4byte	.LASF90
+ 886 0284 C400     		.sleb128 68
+ 887 0286 07       		.uleb128 0x7
+ 888 0287 A0010000 		.4byte	.LASF91
+ 889 028b C500     		.sleb128 69
+ 890 028d 07       		.uleb128 0x7
+ 891 028e D6020000 		.4byte	.LASF92
+ 892 0292 C600     		.sleb128 70
+ 893 0294 07       		.uleb128 0x7
+ 894 0295 94040000 		.4byte	.LASF93
+ 895 0299 C700     		.sleb128 71
+ 896 029b 07       		.uleb128 0x7
+ 897 029c 34030000 		.4byte	.LASF94
+ 898 02a0 C800     		.sleb128 72
+ 899 02a2 07       		.uleb128 0x7
+ 900 02a3 54000000 		.4byte	.LASF95
+ 901 02a7 C900     		.sleb128 73
+ 902 02a9 07       		.uleb128 0x7
+ 903 02aa 5F030000 		.4byte	.LASF96
+ARM GAS  /tmp/ccJAudan.s 			page 17
+
+
+ 904 02ae CA00     		.sleb128 74
+ 905 02b0 07       		.uleb128 0x7
+ 906 02b1 3A070000 		.4byte	.LASF97
+ 907 02b5 CB00     		.sleb128 75
+ 908 02b7 07       		.uleb128 0x7
+ 909 02b8 EB080000 		.4byte	.LASF98
+ 910 02bc CC00     		.sleb128 76
+ 911 02be 07       		.uleb128 0x7
+ 912 02bf 18050000 		.4byte	.LASF99
+ 913 02c3 CD00     		.sleb128 77
+ 914 02c5 07       		.uleb128 0x7
+ 915 02c6 2F080000 		.4byte	.LASF100
+ 916 02ca CE00     		.sleb128 78
+ 917 02cc 07       		.uleb128 0x7
+ 918 02cd 08070000 		.4byte	.LASF101
+ 919 02d1 CF00     		.sleb128 79
+ 920 02d3 07       		.uleb128 0x7
+ 921 02d4 08060000 		.4byte	.LASF102
+ 922 02d8 D000     		.sleb128 80
+ 923 02da 07       		.uleb128 0x7
+ 924 02db 5A080000 		.4byte	.LASF103
+ 925 02df D100     		.sleb128 81
+ 926 02e1 00       		.byte	0
+ 927 02e2 08       		.uleb128 0x8
+ 928 02e3 7B000000 		.4byte	0x7b
+ 929 02e7 F2020000 		.4byte	0x2f2
+ 930 02eb 09       		.uleb128 0x9
+ 931 02ec 30000000 		.4byte	0x30
+ 932 02f0 01       		.byte	0x1
+ 933 02f1 00       		.byte	0
+ 934 02f2 08       		.uleb128 0x8
+ 935 02f3 7B000000 		.4byte	0x7b
+ 936 02f7 02030000 		.4byte	0x302
+ 937 02fb 09       		.uleb128 0x9
+ 938 02fc 30000000 		.4byte	0x30
+ 939 0300 03       		.byte	0x3
+ 940 0301 00       		.byte	0
+ 941 0302 05       		.uleb128 0x5
+ 942 0303 57000000 		.4byte	0x57
+ 943 0307 05       		.uleb128 0x5
+ 944 0308 69000000 		.4byte	0x69
+ 945 030c 0A       		.uleb128 0xa
+ 946 030d 88       		.byte	0x88
+ 947 030e 03       		.byte	0x3
+ 948 030f DB02     		.2byte	0x2db
+ 949 0311 D9040000 		.4byte	0x4d9
+ 950 0315 0B       		.uleb128 0xb
+ 951 0316 435200   		.ascii	"CR\000"
+ 952 0319 03       		.byte	0x3
+ 953 031a DD02     		.2byte	0x2dd
+ 954 031c 9B000000 		.4byte	0x9b
+ 955 0320 02       		.byte	0x2
+ 956 0321 23       		.byte	0x23
+ 957 0322 00       		.uleb128 0
+ 958 0323 0C       		.uleb128 0xc
+ 959 0324 4E020000 		.4byte	.LASF104
+ 960 0328 03       		.byte	0x3
+ARM GAS  /tmp/ccJAudan.s 			page 18
+
+
+ 961 0329 DE02     		.2byte	0x2de
+ 962 032b 9B000000 		.4byte	0x9b
+ 963 032f 02       		.byte	0x2
+ 964 0330 23       		.byte	0x23
+ 965 0331 04       		.uleb128 0x4
+ 966 0332 0C       		.uleb128 0xc
+ 967 0333 63080000 		.4byte	.LASF105
+ 968 0337 03       		.byte	0x3
+ 969 0338 DF02     		.2byte	0x2df
+ 970 033a 9B000000 		.4byte	0x9b
+ 971 033e 02       		.byte	0x2
+ 972 033f 23       		.byte	0x23
+ 973 0340 08       		.uleb128 0x8
+ 974 0341 0B       		.uleb128 0xb
+ 975 0342 43495200 		.ascii	"CIR\000"
+ 976 0346 03       		.byte	0x3
+ 977 0347 E002     		.2byte	0x2e0
+ 978 0349 9B000000 		.4byte	0x9b
+ 979 034d 02       		.byte	0x2
+ 980 034e 23       		.byte	0x23
+ 981 034f 0C       		.uleb128 0xc
+ 982 0350 0C       		.uleb128 0xc
+ 983 0351 8D010000 		.4byte	.LASF106
+ 984 0355 03       		.byte	0x3
+ 985 0356 E102     		.2byte	0x2e1
+ 986 0358 9B000000 		.4byte	0x9b
+ 987 035c 02       		.byte	0x2
+ 988 035d 23       		.byte	0x23
+ 989 035e 10       		.uleb128 0x10
+ 990 035f 0C       		.uleb128 0xc
+ 991 0360 A6020000 		.4byte	.LASF107
+ 992 0364 03       		.byte	0x3
+ 993 0365 E202     		.2byte	0x2e2
+ 994 0367 9B000000 		.4byte	0x9b
+ 995 036b 02       		.byte	0x2
+ 996 036c 23       		.byte	0x23
+ 997 036d 14       		.uleb128 0x14
+ 998 036e 0C       		.uleb128 0xc
+ 999 036f BE030000 		.4byte	.LASF108
+ 1000 0373 03       		.byte	0x3
+ 1001 0374 E302     		.2byte	0x2e3
+ 1002 0376 9B000000 		.4byte	0x9b
+ 1003 037a 02       		.byte	0x2
+ 1004 037b 23       		.byte	0x23
+ 1005 037c 18       		.uleb128 0x18
+ 1006 037d 0C       		.uleb128 0xc
+ 1007 037e 5B050000 		.4byte	.LASF109
+ 1008 0382 03       		.byte	0x3
+ 1009 0383 E402     		.2byte	0x2e4
+ 1010 0385 7B000000 		.4byte	0x7b
+ 1011 0389 02       		.byte	0x2
+ 1012 038a 23       		.byte	0x23
+ 1013 038b 1C       		.uleb128 0x1c
+ 1014 038c 0C       		.uleb128 0xc
+ 1015 038d E8040000 		.4byte	.LASF110
+ 1016 0391 03       		.byte	0x3
+ 1017 0392 E502     		.2byte	0x2e5
+ARM GAS  /tmp/ccJAudan.s 			page 19
+
+
+ 1018 0394 9B000000 		.4byte	0x9b
+ 1019 0398 02       		.byte	0x2
+ 1020 0399 23       		.byte	0x23
+ 1021 039a 20       		.uleb128 0x20
+ 1022 039b 0C       		.uleb128 0xc
+ 1023 039c EA010000 		.4byte	.LASF111
+ 1024 03a0 03       		.byte	0x3
+ 1025 03a1 E602     		.2byte	0x2e6
+ 1026 03a3 9B000000 		.4byte	0x9b
+ 1027 03a7 02       		.byte	0x2
+ 1028 03a8 23       		.byte	0x23
+ 1029 03a9 24       		.uleb128 0x24
+ 1030 03aa 0C       		.uleb128 0xc
+ 1031 03ab 65050000 		.4byte	.LASF112
+ 1032 03af 03       		.byte	0x3
+ 1033 03b0 E702     		.2byte	0x2e7
+ 1034 03b2 E2020000 		.4byte	0x2e2
+ 1035 03b6 02       		.byte	0x2
+ 1036 03b7 23       		.byte	0x23
+ 1037 03b8 28       		.uleb128 0x28
+ 1038 03b9 0C       		.uleb128 0xc
+ 1039 03ba 4D080000 		.4byte	.LASF113
+ 1040 03be 03       		.byte	0x3
+ 1041 03bf E802     		.2byte	0x2e8
+ 1042 03c1 9B000000 		.4byte	0x9b
+ 1043 03c5 02       		.byte	0x2
+ 1044 03c6 23       		.byte	0x23
+ 1045 03c7 30       		.uleb128 0x30
+ 1046 03c8 0C       		.uleb128 0xc
+ 1047 03c9 69070000 		.4byte	.LASF114
+ 1048 03cd 03       		.byte	0x3
+ 1049 03ce E902     		.2byte	0x2e9
+ 1050 03d0 9B000000 		.4byte	0x9b
+ 1051 03d4 02       		.byte	0x2
+ 1052 03d5 23       		.byte	0x23
+ 1053 03d6 34       		.uleb128 0x34
+ 1054 03d7 0C       		.uleb128 0xc
+ 1055 03d8 7B060000 		.4byte	.LASF115
+ 1056 03dc 03       		.byte	0x3
+ 1057 03dd EA02     		.2byte	0x2ea
+ 1058 03df 9B000000 		.4byte	0x9b
+ 1059 03e3 02       		.byte	0x2
+ 1060 03e4 23       		.byte	0x23
+ 1061 03e5 38       		.uleb128 0x38
+ 1062 03e6 0C       		.uleb128 0xc
+ 1063 03e7 6F050000 		.4byte	.LASF116
+ 1064 03eb 03       		.byte	0x3
+ 1065 03ec EB02     		.2byte	0x2eb
+ 1066 03ee 7B000000 		.4byte	0x7b
+ 1067 03f2 02       		.byte	0x2
+ 1068 03f3 23       		.byte	0x23
+ 1069 03f4 3C       		.uleb128 0x3c
+ 1070 03f5 0C       		.uleb128 0xc
+ 1071 03f6 61070000 		.4byte	.LASF117
+ 1072 03fa 03       		.byte	0x3
+ 1073 03fb EC02     		.2byte	0x2ec
+ 1074 03fd 9B000000 		.4byte	0x9b
+ARM GAS  /tmp/ccJAudan.s 			page 20
+
+
+ 1075 0401 02       		.byte	0x2
+ 1076 0402 23       		.byte	0x23
+ 1077 0403 40       		.uleb128 0x40
+ 1078 0404 0C       		.uleb128 0xc
+ 1079 0405 6B060000 		.4byte	.LASF118
+ 1080 0409 03       		.byte	0x3
+ 1081 040a ED02     		.2byte	0x2ed
+ 1082 040c 9B000000 		.4byte	0x9b
+ 1083 0410 02       		.byte	0x2
+ 1084 0411 23       		.byte	0x23
+ 1085 0412 44       		.uleb128 0x44
+ 1086 0413 0C       		.uleb128 0xc
+ 1087 0414 79050000 		.4byte	.LASF119
+ 1088 0418 03       		.byte	0x3
+ 1089 0419 EE02     		.2byte	0x2ee
+ 1090 041b E2020000 		.4byte	0x2e2
+ 1091 041f 02       		.byte	0x2
+ 1092 0420 23       		.byte	0x23
+ 1093 0421 48       		.uleb128 0x48
+ 1094 0422 0C       		.uleb128 0xc
+ 1095 0423 45010000 		.4byte	.LASF120
+ 1096 0427 03       		.byte	0x3
+ 1097 0428 EF02     		.2byte	0x2ef
+ 1098 042a 9B000000 		.4byte	0x9b
+ 1099 042e 02       		.byte	0x2
+ 1100 042f 23       		.byte	0x23
+ 1101 0430 50       		.uleb128 0x50
+ 1102 0431 0C       		.uleb128 0xc
+ 1103 0432 DE040000 		.4byte	.LASF121
+ 1104 0436 03       		.byte	0x3
+ 1105 0437 F002     		.2byte	0x2f0
+ 1106 0439 9B000000 		.4byte	0x9b
+ 1107 043d 02       		.byte	0x2
+ 1108 043e 23       		.byte	0x23
+ 1109 043f 54       		.uleb128 0x54
+ 1110 0440 0C       		.uleb128 0xc
+ 1111 0441 20060000 		.4byte	.LASF122
+ 1112 0445 03       		.byte	0x3
+ 1113 0446 F102     		.2byte	0x2f1
+ 1114 0448 9B000000 		.4byte	0x9b
+ 1115 044c 02       		.byte	0x2
+ 1116 044d 23       		.byte	0x23
+ 1117 044e 58       		.uleb128 0x58
+ 1118 044f 0C       		.uleb128 0xc
+ 1119 0450 83050000 		.4byte	.LASF123
+ 1120 0454 03       		.byte	0x3
+ 1121 0455 F202     		.2byte	0x2f2
+ 1122 0457 7B000000 		.4byte	0x7b
+ 1123 045b 02       		.byte	0x2
+ 1124 045c 23       		.byte	0x23
+ 1125 045d 5C       		.uleb128 0x5c
+ 1126 045e 0C       		.uleb128 0xc
+ 1127 045f 0D000000 		.4byte	.LASF124
+ 1128 0463 03       		.byte	0x3
+ 1129 0464 F302     		.2byte	0x2f3
+ 1130 0466 9B000000 		.4byte	0x9b
+ 1131 046a 02       		.byte	0x2
+ARM GAS  /tmp/ccJAudan.s 			page 21
+
+
+ 1132 046b 23       		.byte	0x23
+ 1133 046c 60       		.uleb128 0x60
+ 1134 046d 0C       		.uleb128 0xc
+ 1135 046e F5030000 		.4byte	.LASF125
+ 1136 0472 03       		.byte	0x3
+ 1137 0473 F402     		.2byte	0x2f4
+ 1138 0475 9B000000 		.4byte	0x9b
+ 1139 0479 02       		.byte	0x2
+ 1140 047a 23       		.byte	0x23
+ 1141 047b 64       		.uleb128 0x64
+ 1142 047c 0C       		.uleb128 0xc
+ 1143 047d 8D050000 		.4byte	.LASF126
+ 1144 0481 03       		.byte	0x3
+ 1145 0482 F502     		.2byte	0x2f5
+ 1146 0484 E2020000 		.4byte	0x2e2
+ 1147 0488 02       		.byte	0x2
+ 1148 0489 23       		.byte	0x23
+ 1149 048a 68       		.uleb128 0x68
+ 1150 048b 0C       		.uleb128 0xc
+ 1151 048c 18080000 		.4byte	.LASF127
+ 1152 0490 03       		.byte	0x3
+ 1153 0491 F602     		.2byte	0x2f6
+ 1154 0493 9B000000 		.4byte	0x9b
+ 1155 0497 02       		.byte	0x2
+ 1156 0498 23       		.byte	0x23
+ 1157 0499 70       		.uleb128 0x70
+ 1158 049a 0B       		.uleb128 0xb
+ 1159 049b 43535200 		.ascii	"CSR\000"
+ 1160 049f 03       		.byte	0x3
+ 1161 04a0 F702     		.2byte	0x2f7
+ 1162 04a2 9B000000 		.4byte	0x9b
+ 1163 04a6 02       		.byte	0x2
+ 1164 04a7 23       		.byte	0x23
+ 1165 04a8 74       		.uleb128 0x74
+ 1166 04a9 0C       		.uleb128 0xc
+ 1167 04aa 97050000 		.4byte	.LASF128
+ 1168 04ae 03       		.byte	0x3
+ 1169 04af F802     		.2byte	0x2f8
+ 1170 04b1 E2020000 		.4byte	0x2e2
+ 1171 04b5 02       		.byte	0x2
+ 1172 04b6 23       		.byte	0x23
+ 1173 04b7 78       		.uleb128 0x78
+ 1174 04b8 0C       		.uleb128 0xc
+ 1175 04b9 F1070000 		.4byte	.LASF129
+ 1176 04bd 03       		.byte	0x3
+ 1177 04be F902     		.2byte	0x2f9
+ 1178 04c0 9B000000 		.4byte	0x9b
+ 1179 04c4 03       		.byte	0x3
+ 1180 04c5 23       		.byte	0x23
+ 1181 04c6 8001     		.uleb128 0x80
+ 1182 04c8 0C       		.uleb128 0xc
+ 1183 04c9 A6030000 		.4byte	.LASF130
+ 1184 04cd 03       		.byte	0x3
+ 1185 04ce FA02     		.2byte	0x2fa
+ 1186 04d0 9B000000 		.4byte	0x9b
+ 1187 04d4 03       		.byte	0x3
+ 1188 04d5 23       		.byte	0x23
+ARM GAS  /tmp/ccJAudan.s 			page 22
+
+
+ 1189 04d6 8401     		.uleb128 0x84
+ 1190 04d8 00       		.byte	0
+ 1191 04d9 0D       		.uleb128 0xd
+ 1192 04da 53030000 		.4byte	.LASF131
+ 1193 04de 03       		.byte	0x3
+ 1194 04df FB02     		.2byte	0x2fb
+ 1195 04e1 0C030000 		.4byte	0x30c
+ 1196 04e5 0E       		.uleb128 0xe
+ 1197 04e6 54       		.byte	0x54
+ 1198 04e7 04       		.byte	0x4
+ 1199 04e8 5C       		.byte	0x5c
+ 1200 04e9 BA060000 		.4byte	0x6ba
+ 1201 04ed 0F       		.uleb128 0xf
+ 1202 04ee 43523100 		.ascii	"CR1\000"
+ 1203 04f2 04       		.byte	0x4
+ 1204 04f3 5D       		.byte	0x5d
+ 1205 04f4 02030000 		.4byte	0x302
+ 1206 04f8 02       		.byte	0x2
+ 1207 04f9 23       		.byte	0x23
+ 1208 04fa 00       		.uleb128 0
+ 1209 04fb 10       		.uleb128 0x10
+ 1210 04fc 61000000 		.4byte	.LASF132
+ 1211 0500 04       		.byte	0x4
+ 1212 0501 5E       		.byte	0x5e
+ 1213 0502 57000000 		.4byte	0x57
+ 1214 0506 02       		.byte	0x2
+ 1215 0507 23       		.byte	0x23
+ 1216 0508 02       		.uleb128 0x2
+ 1217 0509 0F       		.uleb128 0xf
+ 1218 050a 43523200 		.ascii	"CR2\000"
+ 1219 050e 04       		.byte	0x4
+ 1220 050f 5F       		.byte	0x5f
+ 1221 0510 02030000 		.4byte	0x302
+ 1222 0514 02       		.byte	0x2
+ 1223 0515 23       		.byte	0x23
+ 1224 0516 04       		.uleb128 0x4
+ 1225 0517 10       		.uleb128 0x10
+ 1226 0518 69000000 		.4byte	.LASF133
+ 1227 051c 04       		.byte	0x4
+ 1228 051d 60       		.byte	0x60
+ 1229 051e 57000000 		.4byte	0x57
+ 1230 0522 02       		.byte	0x2
+ 1231 0523 23       		.byte	0x23
+ 1232 0524 06       		.uleb128 0x6
+ 1233 0525 10       		.uleb128 0x10
+ 1234 0526 8F030000 		.4byte	.LASF134
+ 1235 052a 04       		.byte	0x4
+ 1236 052b 61       		.byte	0x61
+ 1237 052c 02030000 		.4byte	0x302
+ 1238 0530 02       		.byte	0x2
+ 1239 0531 23       		.byte	0x23
+ 1240 0532 08       		.uleb128 0x8
+ 1241 0533 10       		.uleb128 0x10
+ 1242 0534 D6060000 		.4byte	.LASF135
+ 1243 0538 04       		.byte	0x4
+ 1244 0539 62       		.byte	0x62
+ 1245 053a 57000000 		.4byte	0x57
+ARM GAS  /tmp/ccJAudan.s 			page 23
+
+
+ 1246 053e 02       		.byte	0x2
+ 1247 053f 23       		.byte	0x23
+ 1248 0540 0A       		.uleb128 0xa
+ 1249 0541 10       		.uleb128 0x10
+ 1250 0542 55080000 		.4byte	.LASF136
+ 1251 0546 04       		.byte	0x4
+ 1252 0547 63       		.byte	0x63
+ 1253 0548 02030000 		.4byte	0x302
+ 1254 054c 02       		.byte	0x2
+ 1255 054d 23       		.byte	0x23
+ 1256 054e 0C       		.uleb128 0xc
+ 1257 054f 10       		.uleb128 0x10
+ 1258 0550 7E000000 		.4byte	.LASF137
+ 1259 0554 04       		.byte	0x4
+ 1260 0555 64       		.byte	0x64
+ 1261 0556 57000000 		.4byte	0x57
+ 1262 055a 02       		.byte	0x2
+ 1263 055b 23       		.byte	0x23
+ 1264 055c 0E       		.uleb128 0xe
+ 1265 055d 0F       		.uleb128 0xf
+ 1266 055e 535200   		.ascii	"SR\000"
+ 1267 0561 04       		.byte	0x4
+ 1268 0562 65       		.byte	0x65
+ 1269 0563 02030000 		.4byte	0x302
+ 1270 0567 02       		.byte	0x2
+ 1271 0568 23       		.byte	0x23
+ 1272 0569 10       		.uleb128 0x10
+ 1273 056a 10       		.uleb128 0x10
+ 1274 056b 86000000 		.4byte	.LASF138
+ 1275 056f 04       		.byte	0x4
+ 1276 0570 66       		.byte	0x66
+ 1277 0571 57000000 		.4byte	0x57
+ 1278 0575 02       		.byte	0x2
+ 1279 0576 23       		.byte	0x23
+ 1280 0577 12       		.uleb128 0x12
+ 1281 0578 0F       		.uleb128 0xf
+ 1282 0579 45475200 		.ascii	"EGR\000"
+ 1283 057d 04       		.byte	0x4
+ 1284 057e 67       		.byte	0x67
+ 1285 057f 02030000 		.4byte	0x302
+ 1286 0583 02       		.byte	0x2
+ 1287 0584 23       		.byte	0x23
+ 1288 0585 14       		.uleb128 0x14
+ 1289 0586 10       		.uleb128 0x10
+ 1290 0587 8E000000 		.4byte	.LASF139
+ 1291 058b 04       		.byte	0x4
+ 1292 058c 68       		.byte	0x68
+ 1293 058d 57000000 		.4byte	0x57
+ 1294 0591 02       		.byte	0x2
+ 1295 0592 23       		.byte	0x23
+ 1296 0593 16       		.uleb128 0x16
+ 1297 0594 10       		.uleb128 0x10
+ 1298 0595 59010000 		.4byte	.LASF140
+ 1299 0599 04       		.byte	0x4
+ 1300 059a 69       		.byte	0x69
+ 1301 059b 02030000 		.4byte	0x302
+ 1302 059f 02       		.byte	0x2
+ARM GAS  /tmp/ccJAudan.s 			page 24
+
+
+ 1303 05a0 23       		.byte	0x23
+ 1304 05a1 18       		.uleb128 0x18
+ 1305 05a2 10       		.uleb128 0x10
+ 1306 05a3 96000000 		.4byte	.LASF141
+ 1307 05a7 04       		.byte	0x4
+ 1308 05a8 6A       		.byte	0x6a
+ 1309 05a9 57000000 		.4byte	0x57
+ 1310 05ad 02       		.byte	0x2
+ 1311 05ae 23       		.byte	0x23
+ 1312 05af 1A       		.uleb128 0x1a
+ 1313 05b0 10       		.uleb128 0x10
+ 1314 05b1 5F010000 		.4byte	.LASF142
+ 1315 05b5 04       		.byte	0x4
+ 1316 05b6 6B       		.byte	0x6b
+ 1317 05b7 02030000 		.4byte	0x302
+ 1318 05bb 02       		.byte	0x2
+ 1319 05bc 23       		.byte	0x23
+ 1320 05bd 1C       		.uleb128 0x1c
+ 1321 05be 10       		.uleb128 0x10
+ 1322 05bf 9E000000 		.4byte	.LASF143
+ 1323 05c3 04       		.byte	0x4
+ 1324 05c4 6C       		.byte	0x6c
+ 1325 05c5 57000000 		.4byte	0x57
+ 1326 05c9 02       		.byte	0x2
+ 1327 05ca 23       		.byte	0x23
+ 1328 05cb 1E       		.uleb128 0x1e
+ 1329 05cc 10       		.uleb128 0x10
+ 1330 05cd 12020000 		.4byte	.LASF144
+ 1331 05d1 04       		.byte	0x4
+ 1332 05d2 6D       		.byte	0x6d
+ 1333 05d3 02030000 		.4byte	0x302
+ 1334 05d7 02       		.byte	0x2
+ 1335 05d8 23       		.byte	0x23
+ 1336 05d9 20       		.uleb128 0x20
+ 1337 05da 10       		.uleb128 0x10
+ 1338 05db A6000000 		.4byte	.LASF145
+ 1339 05df 04       		.byte	0x4
+ 1340 05e0 6E       		.byte	0x6e
+ 1341 05e1 57000000 		.4byte	0x57
+ 1342 05e5 02       		.byte	0x2
+ 1343 05e6 23       		.byte	0x23
+ 1344 05e7 22       		.uleb128 0x22
+ 1345 05e8 0F       		.uleb128 0xf
+ 1346 05e9 434E5400 		.ascii	"CNT\000"
+ 1347 05ed 04       		.byte	0x4
+ 1348 05ee 6F       		.byte	0x6f
+ 1349 05ef 9B000000 		.4byte	0x9b
+ 1350 05f3 02       		.byte	0x2
+ 1351 05f4 23       		.byte	0x23
+ 1352 05f5 24       		.uleb128 0x24
+ 1353 05f6 0F       		.uleb128 0xf
+ 1354 05f7 50534300 		.ascii	"PSC\000"
+ 1355 05fb 04       		.byte	0x4
+ 1356 05fc 70       		.byte	0x70
+ 1357 05fd 02030000 		.4byte	0x302
+ 1358 0601 02       		.byte	0x2
+ 1359 0602 23       		.byte	0x23
+ARM GAS  /tmp/ccJAudan.s 			page 25
+
+
+ 1360 0603 28       		.uleb128 0x28
+ 1361 0604 10       		.uleb128 0x10
+ 1362 0605 AE000000 		.4byte	.LASF146
+ 1363 0609 04       		.byte	0x4
+ 1364 060a 71       		.byte	0x71
+ 1365 060b 57000000 		.4byte	0x57
+ 1366 060f 02       		.byte	0x2
+ 1367 0610 23       		.byte	0x23
+ 1368 0611 2A       		.uleb128 0x2a
+ 1369 0612 0F       		.uleb128 0xf
+ 1370 0613 41525200 		.ascii	"ARR\000"
+ 1371 0617 04       		.byte	0x4
+ 1372 0618 72       		.byte	0x72
+ 1373 0619 9B000000 		.4byte	0x9b
+ 1374 061d 02       		.byte	0x2
+ 1375 061e 23       		.byte	0x23
+ 1376 061f 2C       		.uleb128 0x2c
+ 1377 0620 0F       		.uleb128 0xf
+ 1378 0621 52435200 		.ascii	"RCR\000"
+ 1379 0625 04       		.byte	0x4
+ 1380 0626 73       		.byte	0x73
+ 1381 0627 02030000 		.4byte	0x302
+ 1382 062b 02       		.byte	0x2
+ 1383 062c 23       		.byte	0x23
+ 1384 062d 30       		.uleb128 0x30
+ 1385 062e 10       		.uleb128 0x10
+ 1386 062f B2010000 		.4byte	.LASF147
+ 1387 0633 04       		.byte	0x4
+ 1388 0634 74       		.byte	0x74
+ 1389 0635 57000000 		.4byte	0x57
+ 1390 0639 02       		.byte	0x2
+ 1391 063a 23       		.byte	0x23
+ 1392 063b 32       		.uleb128 0x32
+ 1393 063c 0F       		.uleb128 0xf
+ 1394 063d 43435200 		.ascii	"CCR\000"
+ 1395 0641 04       		.byte	0x4
+ 1396 0642 75       		.byte	0x75
+ 1397 0643 BA060000 		.4byte	0x6ba
+ 1398 0647 02       		.byte	0x2
+ 1399 0648 23       		.byte	0x23
+ 1400 0649 34       		.uleb128 0x34
+ 1401 064a 10       		.uleb128 0x10
+ 1402 064b E8020000 		.4byte	.LASF148
+ 1403 064f 04       		.byte	0x4
+ 1404 0650 76       		.byte	0x76
+ 1405 0651 02030000 		.4byte	0x302
+ 1406 0655 02       		.byte	0x2
+ 1407 0656 23       		.byte	0x23
+ 1408 0657 44       		.uleb128 0x44
+ 1409 0658 10       		.uleb128 0x10
+ 1410 0659 BD000000 		.4byte	.LASF149
+ 1411 065d 04       		.byte	0x4
+ 1412 065e 77       		.byte	0x77
+ 1413 065f 57000000 		.4byte	0x57
+ 1414 0663 02       		.byte	0x2
+ 1415 0664 23       		.byte	0x23
+ 1416 0665 46       		.uleb128 0x46
+ARM GAS  /tmp/ccJAudan.s 			page 26
+
+
+ 1417 0666 0F       		.uleb128 0xf
+ 1418 0667 44435200 		.ascii	"DCR\000"
+ 1419 066b 04       		.byte	0x4
+ 1420 066c 78       		.byte	0x78
+ 1421 066d 02030000 		.4byte	0x302
+ 1422 0671 02       		.byte	0x2
+ 1423 0672 23       		.byte	0x23
+ 1424 0673 48       		.uleb128 0x48
+ 1425 0674 10       		.uleb128 0x10
+ 1426 0675 C6000000 		.4byte	.LASF150
+ 1427 0679 04       		.byte	0x4
+ 1428 067a 79       		.byte	0x79
+ 1429 067b 57000000 		.4byte	0x57
+ 1430 067f 02       		.byte	0x2
+ 1431 0680 23       		.byte	0x23
+ 1432 0681 4A       		.uleb128 0x4a
+ 1433 0682 10       		.uleb128 0x10
+ 1434 0683 19070000 		.4byte	.LASF151
+ 1435 0687 04       		.byte	0x4
+ 1436 0688 7A       		.byte	0x7a
+ 1437 0689 02030000 		.4byte	0x302
+ 1438 068d 02       		.byte	0x2
+ 1439 068e 23       		.byte	0x23
+ 1440 068f 4C       		.uleb128 0x4c
+ 1441 0690 10       		.uleb128 0x10
+ 1442 0691 DD000000 		.4byte	.LASF152
+ 1443 0695 04       		.byte	0x4
+ 1444 0696 7B       		.byte	0x7b
+ 1445 0697 57000000 		.4byte	0x57
+ 1446 069b 02       		.byte	0x2
+ 1447 069c 23       		.byte	0x23
+ 1448 069d 4E       		.uleb128 0x4e
+ 1449 069e 0F       		.uleb128 0xf
+ 1450 069f 4F5200   		.ascii	"OR\000"
+ 1451 06a2 04       		.byte	0x4
+ 1452 06a3 7C       		.byte	0x7c
+ 1453 06a4 02030000 		.4byte	0x302
+ 1454 06a8 02       		.byte	0x2
+ 1455 06a9 23       		.byte	0x23
+ 1456 06aa 50       		.uleb128 0x50
+ 1457 06ab 10       		.uleb128 0x10
+ 1458 06ac D3010000 		.4byte	.LASF153
+ 1459 06b0 04       		.byte	0x4
+ 1460 06b1 7D       		.byte	0x7d
+ 1461 06b2 57000000 		.4byte	0x57
+ 1462 06b6 02       		.byte	0x2
+ 1463 06b7 23       		.byte	0x23
+ 1464 06b8 52       		.uleb128 0x52
+ 1465 06b9 00       		.byte	0
+ 1466 06ba 05       		.uleb128 0x5
+ 1467 06bb F2020000 		.4byte	0x2f2
+ 1468 06bf 04       		.uleb128 0x4
+ 1469 06c0 E9030000 		.4byte	.LASF154
+ 1470 06c4 04       		.byte	0x4
+ 1471 06c5 7E       		.byte	0x7e
+ 1472 06c6 E5040000 		.4byte	0x4e5
+ 1473 06ca 11       		.uleb128 0x11
+ARM GAS  /tmp/ccJAudan.s 			page 27
+
+
+ 1474 06cb 01       		.byte	0x1
+ 1475 06cc 05       		.byte	0x5
+ 1476 06cd 4E       		.byte	0x4e
+ 1477 06ce E5060000 		.4byte	0x6e5
+ 1478 06d2 07       		.uleb128 0x7
+ 1479 06d3 BB080000 		.4byte	.LASF155
+ 1480 06d7 00       		.sleb128 0
+ 1481 06d8 07       		.uleb128 0x7
+ 1482 06d9 F5060000 		.4byte	.LASF156
+ 1483 06dd 01       		.sleb128 1
+ 1484 06de 07       		.uleb128 0x7
+ 1485 06df 4F010000 		.4byte	.LASF157
+ 1486 06e3 02       		.sleb128 2
+ 1487 06e4 00       		.byte	0
+ 1488 06e5 04       		.uleb128 0x4
+ 1489 06e6 39080000 		.4byte	.LASF158
+ 1490 06ea 05       		.byte	0x5
+ 1491 06eb 52       		.byte	0x52
+ 1492 06ec CA060000 		.4byte	0x6ca
+ 1493 06f0 04       		.uleb128 0x4
+ 1494 06f1 25080000 		.4byte	.LASF159
+ 1495 06f5 05       		.byte	0x5
+ 1496 06f6 57       		.byte	0x57
+ 1497 06f7 FB060000 		.4byte	0x6fb
+ 1498 06fb 12       		.uleb128 0x12
+ 1499 06fc 25080000 		.4byte	.LASF159
+ 1500 0700 14       		.byte	0x14
+ 1501 0701 06       		.byte	0x6
+ 1502 0702 5001     		.2byte	0x150
+ 1503 0704 54070000 		.4byte	0x754
+ 1504 0708 0C       		.uleb128 0xc
+ 1505 0709 BB010000 		.4byte	.LASF160
+ 1506 070d 06       		.byte	0x6
+ 1507 070e 5401     		.2byte	0x154
+ 1508 0710 E5060000 		.4byte	0x6e5
+ 1509 0714 02       		.byte	0x2
+ 1510 0715 23       		.byte	0x23
+ 1511 0716 00       		.uleb128 0
+ 1512 0717 0C       		.uleb128 0xc
+ 1513 0718 12070000 		.4byte	.LASF161
+ 1514 071c 06       		.byte	0x6
+ 1515 071d 5801     		.2byte	0x158
+ 1516 071f 40080000 		.4byte	0x840
+ 1517 0723 02       		.byte	0x2
+ 1518 0724 23       		.byte	0x23
+ 1519 0725 04       		.uleb128 0x4
+ 1520 0726 0C       		.uleb128 0xc
+ 1521 0727 B6000000 		.4byte	.LASF162
+ 1522 072b 06       		.byte	0x6
+ 1523 072c 5C01     		.2byte	0x15c
+ 1524 072e 8F070000 		.4byte	0x78f
+ 1525 0732 02       		.byte	0x2
+ 1526 0733 23       		.byte	0x23
+ 1527 0734 08       		.uleb128 0x8
+ 1528 0735 0C       		.uleb128 0xc
+ 1529 0736 80080000 		.4byte	.LASF163
+ 1530 073a 06       		.byte	0x6
+ARM GAS  /tmp/ccJAudan.s 			page 28
+
+
+ 1531 073b 6401     		.2byte	0x164
+ 1532 073d 7B000000 		.4byte	0x7b
+ 1533 0741 02       		.byte	0x2
+ 1534 0742 23       		.byte	0x23
+ 1535 0743 0C       		.uleb128 0xc
+ 1536 0744 0B       		.uleb128 0xb
+ 1537 0745 74696D00 		.ascii	"tim\000"
+ 1538 0749 06       		.byte	0x6
+ 1539 074a 6801     		.2byte	0x168
+ 1540 074c 4B080000 		.4byte	0x84b
+ 1541 0750 02       		.byte	0x2
+ 1542 0751 23       		.byte	0x23
+ 1543 0752 10       		.uleb128 0x10
+ 1544 0753 00       		.byte	0
+ 1545 0754 04       		.uleb128 0x4
+ 1546 0755 4D050000 		.4byte	.LASF164
+ 1547 0759 05       		.byte	0x5
+ 1548 075a 5E       		.byte	0x5e
+ 1549 075b 5F070000 		.4byte	0x75f
+ 1550 075f 13       		.uleb128 0x13
+ 1551 0760 04       		.byte	0x4
+ 1552 0761 65070000 		.4byte	0x765
+ 1553 0765 14       		.uleb128 0x14
+ 1554 0766 01       		.byte	0x1
+ 1555 0767 71070000 		.4byte	0x771
+ 1556 076b 15       		.uleb128 0x15
+ 1557 076c 71070000 		.4byte	0x771
+ 1558 0770 00       		.byte	0
+ 1559 0771 13       		.uleb128 0x13
+ 1560 0772 04       		.byte	0x4
+ 1561 0773 F0060000 		.4byte	0x6f0
+ 1562 0777 0D       		.uleb128 0xd
+ 1563 0778 96010000 		.4byte	.LASF165
+ 1564 077c 06       		.byte	0x6
+ 1565 077d 0701     		.2byte	0x107
+ 1566 077f 7B000000 		.4byte	0x7b
+ 1567 0783 0D       		.uleb128 0xd
+ 1568 0784 00000000 		.4byte	.LASF166
+ 1569 0788 06       		.byte	0x6
+ 1570 0789 0C01     		.2byte	0x10c
+ 1571 078b 3E000000 		.4byte	0x3e
+ 1572 078f 0D       		.uleb128 0xd
+ 1573 0790 44080000 		.4byte	.LASF167
+ 1574 0794 06       		.byte	0x6
+ 1575 0795 1101     		.2byte	0x111
+ 1576 0797 57000000 		.4byte	0x57
+ 1577 079b 0A       		.uleb128 0xa
+ 1578 079c 08       		.byte	0x8
+ 1579 079d 06       		.byte	0x6
+ 1580 079e 1601     		.2byte	0x116
+ 1581 07a0 C3070000 		.4byte	0x7c3
+ 1582 07a4 0C       		.uleb128 0xc
+ 1583 07a5 03070000 		.4byte	.LASF168
+ 1584 07a9 06       		.byte	0x6
+ 1585 07aa 1A01     		.2byte	0x11a
+ 1586 07ac 77070000 		.4byte	0x777
+ 1587 07b0 02       		.byte	0x2
+ARM GAS  /tmp/ccJAudan.s 			page 29
+
+
+ 1588 07b1 23       		.byte	0x23
+ 1589 07b2 00       		.uleb128 0
+ 1590 07b3 0C       		.uleb128 0xc
+ 1591 07b4 E0030000 		.4byte	.LASF169
+ 1592 07b8 06       		.byte	0x6
+ 1593 07b9 2001     		.2byte	0x120
+ 1594 07bb 54070000 		.4byte	0x754
+ 1595 07bf 02       		.byte	0x2
+ 1596 07c0 23       		.byte	0x23
+ 1597 07c1 04       		.uleb128 0x4
+ 1598 07c2 00       		.byte	0
+ 1599 07c3 0D       		.uleb128 0xd
+ 1600 07c4 A3070000 		.4byte	.LASF170
+ 1601 07c8 06       		.byte	0x6
+ 1602 07c9 2201     		.2byte	0x122
+ 1603 07cb 9B070000 		.4byte	0x79b
+ 1604 07cf 0A       		.uleb128 0xa
+ 1605 07d0 30       		.byte	0x30
+ 1606 07d1 06       		.byte	0x6
+ 1607 07d2 2701     		.2byte	0x127
+ 1608 07d4 24080000 		.4byte	0x824
+ 1609 07d8 0C       		.uleb128 0xc
+ 1610 07d9 3B010000 		.4byte	.LASF171
+ 1611 07dd 06       		.byte	0x6
+ 1612 07de 2D01     		.2byte	0x12d
+ 1613 07e0 7B000000 		.4byte	0x7b
+ 1614 07e4 02       		.byte	0x2
+ 1615 07e5 23       		.byte	0x23
+ 1616 07e6 00       		.uleb128 0
+ 1617 07e7 0C       		.uleb128 0xc
+ 1618 07e8 B6000000 		.4byte	.LASF162
+ 1619 07ec 06       		.byte	0x6
+ 1620 07ed 3301     		.2byte	0x133
+ 1621 07ef 8F070000 		.4byte	0x78f
+ 1622 07f3 02       		.byte	0x2
+ 1623 07f4 23       		.byte	0x23
+ 1624 07f5 04       		.uleb128 0x4
+ 1625 07f6 0C       		.uleb128 0xc
+ 1626 07f7 E0030000 		.4byte	.LASF169
+ 1627 07fb 06       		.byte	0x6
+ 1628 07fc 3901     		.2byte	0x139
+ 1629 07fe 54070000 		.4byte	0x754
+ 1630 0802 02       		.byte	0x2
+ 1631 0803 23       		.byte	0x23
+ 1632 0804 08       		.uleb128 0x8
+ 1633 0805 0C       		.uleb128 0xc
+ 1634 0806 C1010000 		.4byte	.LASF172
+ 1635 080a 06       		.byte	0x6
+ 1636 080b 3D01     		.2byte	0x13d
+ 1637 080d 24080000 		.4byte	0x824
+ 1638 0811 02       		.byte	0x2
+ 1639 0812 23       		.byte	0x23
+ 1640 0813 0C       		.uleb128 0xc
+ 1641 0814 0B       		.uleb128 0xb
+ 1642 0815 63723200 		.ascii	"cr2\000"
+ 1643 0819 06       		.byte	0x6
+ 1644 081a 4301     		.2byte	0x143
+ARM GAS  /tmp/ccJAudan.s 			page 30
+
+
+ 1645 081c 57000000 		.4byte	0x57
+ 1646 0820 02       		.byte	0x2
+ 1647 0821 23       		.byte	0x23
+ 1648 0822 2C       		.uleb128 0x2c
+ 1649 0823 00       		.byte	0
+ 1650 0824 08       		.uleb128 0x8
+ 1651 0825 C3070000 		.4byte	0x7c3
+ 1652 0829 34080000 		.4byte	0x834
+ 1653 082d 09       		.uleb128 0x9
+ 1654 082e 30000000 		.4byte	0x30
+ 1655 0832 03       		.byte	0x3
+ 1656 0833 00       		.byte	0
+ 1657 0834 0D       		.uleb128 0xd
+ 1658 0835 CC060000 		.4byte	.LASF173
+ 1659 0839 06       		.byte	0x6
+ 1660 083a 4B01     		.2byte	0x14b
+ 1661 083c CF070000 		.4byte	0x7cf
+ 1662 0840 13       		.uleb128 0x13
+ 1663 0841 04       		.byte	0x4
+ 1664 0842 46080000 		.4byte	0x846
+ 1665 0846 16       		.uleb128 0x16
+ 1666 0847 34080000 		.4byte	0x834
+ 1667 084b 13       		.uleb128 0x13
+ 1668 084c 04       		.byte	0x4
+ 1669 084d BF060000 		.4byte	0x6bf
+ 1670 0851 17       		.uleb128 0x17
+ 1671 0852 3C000000 		.4byte	.LASF190
+ 1672 0856 01       		.byte	0x1
+ 1673 0857 68       		.byte	0x68
+ 1674 0858 01       		.byte	0x1
+ 1675 0859 01       		.byte	0x1
+ 1676 085a 74080000 		.4byte	0x874
+ 1677 085e 18       		.uleb128 0x18
+ 1678 085f 18040000 		.4byte	.LASF177
+ 1679 0863 01       		.byte	0x1
+ 1680 0864 68       		.byte	0x68
+ 1681 0865 71070000 		.4byte	0x771
+ 1682 0869 19       		.uleb128 0x19
+ 1683 086a 737200   		.ascii	"sr\000"
+ 1684 086d 01       		.byte	0x1
+ 1685 086e 69       		.byte	0x69
+ 1686 086f 57000000 		.4byte	0x57
+ 1687 0873 00       		.byte	0
+ 1688 0874 1A       		.uleb128 0x1a
+ 1689 0875 01       		.byte	0x1
+ 1690 0876 9D020000 		.4byte	.LASF174
+ 1691 087a 01       		.byte	0x1
+ 1692 087b E3       		.byte	0xe3
+ 1693 087c 01       		.byte	0x1
+ 1694 087d 00000000 		.4byte	.LFB119
+ 1695 0881 64000000 		.4byte	.LFE119
+ 1696 0885 00000000 		.4byte	.LLST0
+ 1697 0889 B7080000 		.4byte	0x8b7
+ 1698 088d 1B       		.uleb128 0x1b
+ 1699 088e 51080000 		.4byte	0x851
+ 1700 0892 02000000 		.4byte	.LBB4
+ 1701 0896 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  /tmp/ccJAudan.s 			page 31
+
+
+ 1702 089a 01       		.byte	0x1
+ 1703 089b E7       		.byte	0xe7
+ 1704 089c 1C       		.uleb128 0x1c
+ 1705 089d 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 1706 08a1 1D       		.uleb128 0x1d
+ 1707 08a2 69080000 		.4byte	0x869
+ 1708 08a6 01       		.byte	0x1
+ 1709 08a7 54       		.byte	0x54
+ 1710 08a8 1E       		.uleb128 0x1e
+ 1711 08a9 5E080000 		.4byte	0x85e
+ 1712 08ad 06       		.byte	0x6
+ 1713 08ae 03       		.byte	0x3
+ 1714 08af 00000000 		.4byte	PWMD4
+ 1715 08b3 9F       		.byte	0x9f
+ 1716 08b4 00       		.byte	0
+ 1717 08b5 00       		.byte	0
+ 1718 08b6 00       		.byte	0
+ 1719 08b7 1F       		.uleb128 0x1f
+ 1720 08b8 01       		.byte	0x1
+ 1721 08b9 93080000 		.4byte	.LASF191
+ 1722 08bd 01       		.byte	0x1
+ 1723 08be 3F01     		.2byte	0x13f
+ 1724 08c0 01       		.byte	0x1
+ 1725 08c1 00000000 		.4byte	.LFB120
+ 1726 08c5 1C000000 		.4byte	.LFE120
+ 1727 08c9 20000000 		.4byte	.LLST1
+ 1728 08cd 20       		.uleb128 0x20
+ 1729 08ce 01       		.byte	0x1
+ 1730 08cf DC010000 		.4byte	.LASF175
+ 1731 08d3 01       		.byte	0x1
+ 1732 08d4 6F01     		.2byte	0x16f
+ 1733 08d6 01       		.byte	0x1
+ 1734 08d7 00000000 		.4byte	.LFB121
+ 1735 08db 10010000 		.4byte	.LFE121
+ 1736 08df 40000000 		.4byte	.LLST2
+ 1737 08e3 14090000 		.4byte	0x914
+ 1738 08e7 21       		.uleb128 0x21
+ 1739 08e8 18040000 		.4byte	.LASF177
+ 1740 08ec 01       		.byte	0x1
+ 1741 08ed 6F01     		.2byte	0x16f
+ 1742 08ef 71070000 		.4byte	0x771
+ 1743 08f3 60000000 		.4byte	.LLST3
+ 1744 08f7 22       		.uleb128 0x22
+ 1745 08f8 70736300 		.ascii	"psc\000"
+ 1746 08fc 01       		.byte	0x1
+ 1747 08fd 7001     		.2byte	0x170
+ 1748 08ff 7B000000 		.4byte	0x7b
+ 1749 0903 23       		.uleb128 0x23
+ 1750 0904 FF030000 		.4byte	.LASF181
+ 1751 0908 01       		.byte	0x1
+ 1752 0909 7101     		.2byte	0x171
+ 1753 090b 57000000 		.4byte	0x57
+ 1754 090f 94000000 		.4byte	.LLST4
+ 1755 0913 00       		.byte	0
+ 1756 0914 20       		.uleb128 0x20
+ 1757 0915 01       		.byte	0x1
+ 1758 0916 8E060000 		.4byte	.LASF176
+ARM GAS  /tmp/ccJAudan.s 			page 32
+
+
+ 1759 091a 01       		.byte	0x1
+ 1760 091b 2E02     		.2byte	0x22e
+ 1761 091d 01       		.byte	0x1
+ 1762 091e 00000000 		.4byte	.LFB122
+ 1763 0922 38000000 		.4byte	.LFE122
+ 1764 0926 EA000000 		.4byte	.LLST5
+ 1765 092a 3F090000 		.4byte	0x93f
+ 1766 092e 21       		.uleb128 0x21
+ 1767 092f 18040000 		.4byte	.LASF177
+ 1768 0933 01       		.byte	0x1
+ 1769 0934 2E02     		.2byte	0x22e
+ 1770 0936 71070000 		.4byte	0x771
+ 1771 093a 0A010000 		.4byte	.LLST6
+ 1772 093e 00       		.byte	0
+ 1773 093f 20       		.uleb128 0x20
+ 1774 0940 01       		.byte	0x1
+ 1775 0941 DE060000 		.4byte	.LASF178
+ 1776 0945 01       		.byte	0x1
+ 1777 0946 6E02     		.2byte	0x26e
+ 1778 0948 01       		.byte	0x1
+ 1779 0949 00000000 		.4byte	.LFB123
+ 1780 094d 36000000 		.4byte	.LFE123
+ 1781 0951 28010000 		.4byte	.LLST7
+ 1782 0955 A4090000 		.4byte	0x9a4
+ 1783 0959 21       		.uleb128 0x21
+ 1784 095a 18040000 		.4byte	.LASF177
+ 1785 095e 01       		.byte	0x1
+ 1786 095f 6E02     		.2byte	0x26e
+ 1787 0961 71070000 		.4byte	0x771
+ 1788 0965 48010000 		.4byte	.LLST8
+ 1789 0969 21       		.uleb128 0x21
+ 1790 096a 73060000 		.4byte	.LASF179
+ 1791 096e 01       		.byte	0x1
+ 1792 096f 6F02     		.2byte	0x26f
+ 1793 0971 83070000 		.4byte	0x783
+ 1794 0975 5B010000 		.4byte	.LLST9
+ 1795 0979 21       		.uleb128 0x21
+ 1796 097a 7D030000 		.4byte	.LASF180
+ 1797 097e 01       		.byte	0x1
+ 1798 097f 7002     		.2byte	0x270
+ 1799 0981 8F070000 		.4byte	0x78f
+ 1800 0985 6E010000 		.4byte	.LLST10
+ 1801 0989 24       		.uleb128 0x24
+ 1802 098a 18000000 		.4byte	.LBB8
+ 1803 098e 32000000 		.4byte	.LBE8
+ 1804 0992 23       		.uleb128 0x23
+ 1805 0993 11090000 		.4byte	.LASF182
+ 1806 0997 01       		.byte	0x1
+ 1807 0998 7602     		.2byte	0x276
+ 1808 099a 7B000000 		.4byte	0x7b
+ 1809 099e 81010000 		.4byte	.LLST11
+ 1810 09a2 00       		.byte	0
+ 1811 09a3 00       		.byte	0
+ 1812 09a4 25       		.uleb128 0x25
+ 1813 09a5 01       		.byte	0x1
+ 1814 09a6 68080000 		.4byte	.LASF183
+ 1815 09aa 01       		.byte	0x1
+ARM GAS  /tmp/ccJAudan.s 			page 33
+
+
+ 1816 09ab 8C02     		.2byte	0x28c
+ 1817 09ad 01       		.byte	0x1
+ 1818 09ae 00000000 		.4byte	.LFB124
+ 1819 09b2 20000000 		.4byte	.LFE124
+ 1820 09b6 02       		.byte	0x2
+ 1821 09b7 7D       		.byte	0x7d
+ 1822 09b8 00       		.sleb128 0
+ 1823 09b9 DE090000 		.4byte	0x9de
+ 1824 09bd 21       		.uleb128 0x21
+ 1825 09be 18040000 		.4byte	.LASF177
+ 1826 09c2 01       		.byte	0x1
+ 1827 09c3 8C02     		.2byte	0x28c
+ 1828 09c5 71070000 		.4byte	0x771
+ 1829 09c9 9A010000 		.4byte	.LLST12
+ 1830 09cd 21       		.uleb128 0x21
+ 1831 09ce 73060000 		.4byte	.LASF179
+ 1832 09d2 01       		.byte	0x1
+ 1833 09d3 8C02     		.2byte	0x28c
+ 1834 09d5 83070000 		.4byte	0x783
+ 1835 09d9 AD010000 		.4byte	.LLST13
+ 1836 09dd 00       		.byte	0
+ 1837 09de 26       		.uleb128 0x26
+ 1838 09df F0050000 		.4byte	.LASF184
+ 1839 09e3 07       		.byte	0x7
+ 1840 09e4 9806     		.2byte	0x698
+ 1841 09e6 07030000 		.4byte	0x307
+ 1842 09ea 01       		.byte	0x1
+ 1843 09eb 01       		.byte	0x1
+ 1844 09ec 26       		.uleb128 0x26
+ 1845 09ed 97020000 		.4byte	.LASF185
+ 1846 09f1 06       		.byte	0x6
+ 1847 09f2 9301     		.2byte	0x193
+ 1848 09f4 F0060000 		.4byte	0x6f0
+ 1849 09f8 01       		.byte	0x1
+ 1850 09f9 01       		.byte	0x1
+ 1851 09fa 26       		.uleb128 0x26
+ 1852 09fb F0050000 		.4byte	.LASF184
+ 1853 09ff 07       		.byte	0x7
+ 1854 0a00 9806     		.2byte	0x698
+ 1855 0a02 07030000 		.4byte	0x307
+ 1856 0a06 01       		.byte	0x1
+ 1857 0a07 01       		.byte	0x1
+ 1858 0a08 27       		.uleb128 0x27
+ 1859 0a09 97020000 		.4byte	.LASF185
+ 1860 0a0d 01       		.byte	0x1
+ 1861 0a0e 43       		.byte	0x43
+ 1862 0a0f F0060000 		.4byte	0x6f0
+ 1863 0a13 01       		.byte	0x1
+ 1864 0a14 05       		.byte	0x5
+ 1865 0a15 03       		.byte	0x3
+ 1866 0a16 00000000 		.4byte	PWMD4
+ 1867 0a1a 00       		.byte	0
+ 1868              		.section	.debug_abbrev,"",%progbits
+ 1869              	.Ldebug_abbrev0:
+ 1870 0000 01       		.uleb128 0x1
+ 1871 0001 11       		.uleb128 0x11
+ 1872 0002 01       		.byte	0x1
+ARM GAS  /tmp/ccJAudan.s 			page 34
+
+
+ 1873 0003 25       		.uleb128 0x25
+ 1874 0004 0E       		.uleb128 0xe
+ 1875 0005 13       		.uleb128 0x13
+ 1876 0006 0B       		.uleb128 0xb
+ 1877 0007 03       		.uleb128 0x3
+ 1878 0008 0E       		.uleb128 0xe
+ 1879 0009 1B       		.uleb128 0x1b
+ 1880 000a 0E       		.uleb128 0xe
+ 1881 000b 11       		.uleb128 0x11
+ 1882 000c 01       		.uleb128 0x1
+ 1883 000d 52       		.uleb128 0x52
+ 1884 000e 01       		.uleb128 0x1
+ 1885 000f 55       		.uleb128 0x55
+ 1886 0010 06       		.uleb128 0x6
+ 1887 0011 10       		.uleb128 0x10
+ 1888 0012 06       		.uleb128 0x6
+ 1889 0013 00       		.byte	0
+ 1890 0014 00       		.byte	0
+ 1891 0015 02       		.uleb128 0x2
+ 1892 0016 24       		.uleb128 0x24
+ 1893 0017 00       		.byte	0
+ 1894 0018 0B       		.uleb128 0xb
+ 1895 0019 0B       		.uleb128 0xb
+ 1896 001a 3E       		.uleb128 0x3e
+ 1897 001b 0B       		.uleb128 0xb
+ 1898 001c 03       		.uleb128 0x3
+ 1899 001d 08       		.uleb128 0x8
+ 1900 001e 00       		.byte	0
+ 1901 001f 00       		.byte	0
+ 1902 0020 03       		.uleb128 0x3
+ 1903 0021 24       		.uleb128 0x24
+ 1904 0022 00       		.byte	0
+ 1905 0023 0B       		.uleb128 0xb
+ 1906 0024 0B       		.uleb128 0xb
+ 1907 0025 3E       		.uleb128 0x3e
+ 1908 0026 0B       		.uleb128 0xb
+ 1909 0027 03       		.uleb128 0x3
+ 1910 0028 0E       		.uleb128 0xe
+ 1911 0029 00       		.byte	0
+ 1912 002a 00       		.byte	0
+ 1913 002b 04       		.uleb128 0x4
+ 1914 002c 16       		.uleb128 0x16
+ 1915 002d 00       		.byte	0
+ 1916 002e 03       		.uleb128 0x3
+ 1917 002f 0E       		.uleb128 0xe
+ 1918 0030 3A       		.uleb128 0x3a
+ 1919 0031 0B       		.uleb128 0xb
+ 1920 0032 3B       		.uleb128 0x3b
+ 1921 0033 0B       		.uleb128 0xb
+ 1922 0034 49       		.uleb128 0x49
+ 1923 0035 13       		.uleb128 0x13
+ 1924 0036 00       		.byte	0
+ 1925 0037 00       		.byte	0
+ 1926 0038 05       		.uleb128 0x5
+ 1927 0039 35       		.uleb128 0x35
+ 1928 003a 00       		.byte	0
+ 1929 003b 49       		.uleb128 0x49
+ARM GAS  /tmp/ccJAudan.s 			page 35
+
+
+ 1930 003c 13       		.uleb128 0x13
+ 1931 003d 00       		.byte	0
+ 1932 003e 00       		.byte	0
+ 1933 003f 06       		.uleb128 0x6
+ 1934 0040 04       		.uleb128 0x4
+ 1935 0041 01       		.byte	0x1
+ 1936 0042 03       		.uleb128 0x3
+ 1937 0043 0E       		.uleb128 0xe
+ 1938 0044 0B       		.uleb128 0xb
+ 1939 0045 0B       		.uleb128 0xb
+ 1940 0046 3A       		.uleb128 0x3a
+ 1941 0047 0B       		.uleb128 0xb
+ 1942 0048 3B       		.uleb128 0x3b
+ 1943 0049 0B       		.uleb128 0xb
+ 1944 004a 01       		.uleb128 0x1
+ 1945 004b 13       		.uleb128 0x13
+ 1946 004c 00       		.byte	0
+ 1947 004d 00       		.byte	0
+ 1948 004e 07       		.uleb128 0x7
+ 1949 004f 28       		.uleb128 0x28
+ 1950 0050 00       		.byte	0
+ 1951 0051 03       		.uleb128 0x3
+ 1952 0052 0E       		.uleb128 0xe
+ 1953 0053 1C       		.uleb128 0x1c
+ 1954 0054 0D       		.uleb128 0xd
+ 1955 0055 00       		.byte	0
+ 1956 0056 00       		.byte	0
+ 1957 0057 08       		.uleb128 0x8
+ 1958 0058 01       		.uleb128 0x1
+ 1959 0059 01       		.byte	0x1
+ 1960 005a 49       		.uleb128 0x49
+ 1961 005b 13       		.uleb128 0x13
+ 1962 005c 01       		.uleb128 0x1
+ 1963 005d 13       		.uleb128 0x13
+ 1964 005e 00       		.byte	0
+ 1965 005f 00       		.byte	0
+ 1966 0060 09       		.uleb128 0x9
+ 1967 0061 21       		.uleb128 0x21
+ 1968 0062 00       		.byte	0
+ 1969 0063 49       		.uleb128 0x49
+ 1970 0064 13       		.uleb128 0x13
+ 1971 0065 2F       		.uleb128 0x2f
+ 1972 0066 0B       		.uleb128 0xb
+ 1973 0067 00       		.byte	0
+ 1974 0068 00       		.byte	0
+ 1975 0069 0A       		.uleb128 0xa
+ 1976 006a 13       		.uleb128 0x13
+ 1977 006b 01       		.byte	0x1
+ 1978 006c 0B       		.uleb128 0xb
+ 1979 006d 0B       		.uleb128 0xb
+ 1980 006e 3A       		.uleb128 0x3a
+ 1981 006f 0B       		.uleb128 0xb
+ 1982 0070 3B       		.uleb128 0x3b
+ 1983 0071 05       		.uleb128 0x5
+ 1984 0072 01       		.uleb128 0x1
+ 1985 0073 13       		.uleb128 0x13
+ 1986 0074 00       		.byte	0
+ARM GAS  /tmp/ccJAudan.s 			page 36
+
+
+ 1987 0075 00       		.byte	0
+ 1988 0076 0B       		.uleb128 0xb
+ 1989 0077 0D       		.uleb128 0xd
+ 1990 0078 00       		.byte	0
+ 1991 0079 03       		.uleb128 0x3
+ 1992 007a 08       		.uleb128 0x8
+ 1993 007b 3A       		.uleb128 0x3a
+ 1994 007c 0B       		.uleb128 0xb
+ 1995 007d 3B       		.uleb128 0x3b
+ 1996 007e 05       		.uleb128 0x5
+ 1997 007f 49       		.uleb128 0x49
+ 1998 0080 13       		.uleb128 0x13
+ 1999 0081 38       		.uleb128 0x38
+ 2000 0082 0A       		.uleb128 0xa
+ 2001 0083 00       		.byte	0
+ 2002 0084 00       		.byte	0
+ 2003 0085 0C       		.uleb128 0xc
+ 2004 0086 0D       		.uleb128 0xd
+ 2005 0087 00       		.byte	0
+ 2006 0088 03       		.uleb128 0x3
+ 2007 0089 0E       		.uleb128 0xe
+ 2008 008a 3A       		.uleb128 0x3a
+ 2009 008b 0B       		.uleb128 0xb
+ 2010 008c 3B       		.uleb128 0x3b
+ 2011 008d 05       		.uleb128 0x5
+ 2012 008e 49       		.uleb128 0x49
+ 2013 008f 13       		.uleb128 0x13
+ 2014 0090 38       		.uleb128 0x38
+ 2015 0091 0A       		.uleb128 0xa
+ 2016 0092 00       		.byte	0
+ 2017 0093 00       		.byte	0
+ 2018 0094 0D       		.uleb128 0xd
+ 2019 0095 16       		.uleb128 0x16
+ 2020 0096 00       		.byte	0
+ 2021 0097 03       		.uleb128 0x3
+ 2022 0098 0E       		.uleb128 0xe
+ 2023 0099 3A       		.uleb128 0x3a
+ 2024 009a 0B       		.uleb128 0xb
+ 2025 009b 3B       		.uleb128 0x3b
+ 2026 009c 05       		.uleb128 0x5
+ 2027 009d 49       		.uleb128 0x49
+ 2028 009e 13       		.uleb128 0x13
+ 2029 009f 00       		.byte	0
+ 2030 00a0 00       		.byte	0
+ 2031 00a1 0E       		.uleb128 0xe
+ 2032 00a2 13       		.uleb128 0x13
+ 2033 00a3 01       		.byte	0x1
+ 2034 00a4 0B       		.uleb128 0xb
+ 2035 00a5 0B       		.uleb128 0xb
+ 2036 00a6 3A       		.uleb128 0x3a
+ 2037 00a7 0B       		.uleb128 0xb
+ 2038 00a8 3B       		.uleb128 0x3b
+ 2039 00a9 0B       		.uleb128 0xb
+ 2040 00aa 01       		.uleb128 0x1
+ 2041 00ab 13       		.uleb128 0x13
+ 2042 00ac 00       		.byte	0
+ 2043 00ad 00       		.byte	0
+ARM GAS  /tmp/ccJAudan.s 			page 37
+
+
+ 2044 00ae 0F       		.uleb128 0xf
+ 2045 00af 0D       		.uleb128 0xd
+ 2046 00b0 00       		.byte	0
+ 2047 00b1 03       		.uleb128 0x3
+ 2048 00b2 08       		.uleb128 0x8
+ 2049 00b3 3A       		.uleb128 0x3a
+ 2050 00b4 0B       		.uleb128 0xb
+ 2051 00b5 3B       		.uleb128 0x3b
+ 2052 00b6 0B       		.uleb128 0xb
+ 2053 00b7 49       		.uleb128 0x49
+ 2054 00b8 13       		.uleb128 0x13
+ 2055 00b9 38       		.uleb128 0x38
+ 2056 00ba 0A       		.uleb128 0xa
+ 2057 00bb 00       		.byte	0
+ 2058 00bc 00       		.byte	0
+ 2059 00bd 10       		.uleb128 0x10
+ 2060 00be 0D       		.uleb128 0xd
+ 2061 00bf 00       		.byte	0
+ 2062 00c0 03       		.uleb128 0x3
+ 2063 00c1 0E       		.uleb128 0xe
+ 2064 00c2 3A       		.uleb128 0x3a
+ 2065 00c3 0B       		.uleb128 0xb
+ 2066 00c4 3B       		.uleb128 0x3b
+ 2067 00c5 0B       		.uleb128 0xb
+ 2068 00c6 49       		.uleb128 0x49
+ 2069 00c7 13       		.uleb128 0x13
+ 2070 00c8 38       		.uleb128 0x38
+ 2071 00c9 0A       		.uleb128 0xa
+ 2072 00ca 00       		.byte	0
+ 2073 00cb 00       		.byte	0
+ 2074 00cc 11       		.uleb128 0x11
+ 2075 00cd 04       		.uleb128 0x4
+ 2076 00ce 01       		.byte	0x1
+ 2077 00cf 0B       		.uleb128 0xb
+ 2078 00d0 0B       		.uleb128 0xb
+ 2079 00d1 3A       		.uleb128 0x3a
+ 2080 00d2 0B       		.uleb128 0xb
+ 2081 00d3 3B       		.uleb128 0x3b
+ 2082 00d4 0B       		.uleb128 0xb
+ 2083 00d5 01       		.uleb128 0x1
+ 2084 00d6 13       		.uleb128 0x13
+ 2085 00d7 00       		.byte	0
+ 2086 00d8 00       		.byte	0
+ 2087 00d9 12       		.uleb128 0x12
+ 2088 00da 13       		.uleb128 0x13
+ 2089 00db 01       		.byte	0x1
+ 2090 00dc 03       		.uleb128 0x3
+ 2091 00dd 0E       		.uleb128 0xe
+ 2092 00de 0B       		.uleb128 0xb
+ 2093 00df 0B       		.uleb128 0xb
+ 2094 00e0 3A       		.uleb128 0x3a
+ 2095 00e1 0B       		.uleb128 0xb
+ 2096 00e2 3B       		.uleb128 0x3b
+ 2097 00e3 05       		.uleb128 0x5
+ 2098 00e4 01       		.uleb128 0x1
+ 2099 00e5 13       		.uleb128 0x13
+ 2100 00e6 00       		.byte	0
+ARM GAS  /tmp/ccJAudan.s 			page 38
+
+
+ 2101 00e7 00       		.byte	0
+ 2102 00e8 13       		.uleb128 0x13
+ 2103 00e9 0F       		.uleb128 0xf
+ 2104 00ea 00       		.byte	0
+ 2105 00eb 0B       		.uleb128 0xb
+ 2106 00ec 0B       		.uleb128 0xb
+ 2107 00ed 49       		.uleb128 0x49
+ 2108 00ee 13       		.uleb128 0x13
+ 2109 00ef 00       		.byte	0
+ 2110 00f0 00       		.byte	0
+ 2111 00f1 14       		.uleb128 0x14
+ 2112 00f2 15       		.uleb128 0x15
+ 2113 00f3 01       		.byte	0x1
+ 2114 00f4 27       		.uleb128 0x27
+ 2115 00f5 0C       		.uleb128 0xc
+ 2116 00f6 01       		.uleb128 0x1
+ 2117 00f7 13       		.uleb128 0x13
+ 2118 00f8 00       		.byte	0
+ 2119 00f9 00       		.byte	0
+ 2120 00fa 15       		.uleb128 0x15
+ 2121 00fb 05       		.uleb128 0x5
+ 2122 00fc 00       		.byte	0
+ 2123 00fd 49       		.uleb128 0x49
+ 2124 00fe 13       		.uleb128 0x13
+ 2125 00ff 00       		.byte	0
+ 2126 0100 00       		.byte	0
+ 2127 0101 16       		.uleb128 0x16
+ 2128 0102 26       		.uleb128 0x26
+ 2129 0103 00       		.byte	0
+ 2130 0104 49       		.uleb128 0x49
+ 2131 0105 13       		.uleb128 0x13
+ 2132 0106 00       		.byte	0
+ 2133 0107 00       		.byte	0
+ 2134 0108 17       		.uleb128 0x17
+ 2135 0109 2E       		.uleb128 0x2e
+ 2136 010a 01       		.byte	0x1
+ 2137 010b 03       		.uleb128 0x3
+ 2138 010c 0E       		.uleb128 0xe
+ 2139 010d 3A       		.uleb128 0x3a
+ 2140 010e 0B       		.uleb128 0xb
+ 2141 010f 3B       		.uleb128 0x3b
+ 2142 0110 0B       		.uleb128 0xb
+ 2143 0111 27       		.uleb128 0x27
+ 2144 0112 0C       		.uleb128 0xc
+ 2145 0113 20       		.uleb128 0x20
+ 2146 0114 0B       		.uleb128 0xb
+ 2147 0115 01       		.uleb128 0x1
+ 2148 0116 13       		.uleb128 0x13
+ 2149 0117 00       		.byte	0
+ 2150 0118 00       		.byte	0
+ 2151 0119 18       		.uleb128 0x18
+ 2152 011a 05       		.uleb128 0x5
+ 2153 011b 00       		.byte	0
+ 2154 011c 03       		.uleb128 0x3
+ 2155 011d 0E       		.uleb128 0xe
+ 2156 011e 3A       		.uleb128 0x3a
+ 2157 011f 0B       		.uleb128 0xb
+ARM GAS  /tmp/ccJAudan.s 			page 39
+
+
+ 2158 0120 3B       		.uleb128 0x3b
+ 2159 0121 0B       		.uleb128 0xb
+ 2160 0122 49       		.uleb128 0x49
+ 2161 0123 13       		.uleb128 0x13
+ 2162 0124 00       		.byte	0
+ 2163 0125 00       		.byte	0
+ 2164 0126 19       		.uleb128 0x19
+ 2165 0127 34       		.uleb128 0x34
+ 2166 0128 00       		.byte	0
+ 2167 0129 03       		.uleb128 0x3
+ 2168 012a 08       		.uleb128 0x8
+ 2169 012b 3A       		.uleb128 0x3a
+ 2170 012c 0B       		.uleb128 0xb
+ 2171 012d 3B       		.uleb128 0x3b
+ 2172 012e 0B       		.uleb128 0xb
+ 2173 012f 49       		.uleb128 0x49
+ 2174 0130 13       		.uleb128 0x13
+ 2175 0131 00       		.byte	0
+ 2176 0132 00       		.byte	0
+ 2177 0133 1A       		.uleb128 0x1a
+ 2178 0134 2E       		.uleb128 0x2e
+ 2179 0135 01       		.byte	0x1
+ 2180 0136 3F       		.uleb128 0x3f
+ 2181 0137 0C       		.uleb128 0xc
+ 2182 0138 03       		.uleb128 0x3
+ 2183 0139 0E       		.uleb128 0xe
+ 2184 013a 3A       		.uleb128 0x3a
+ 2185 013b 0B       		.uleb128 0xb
+ 2186 013c 3B       		.uleb128 0x3b
+ 2187 013d 0B       		.uleb128 0xb
+ 2188 013e 27       		.uleb128 0x27
+ 2189 013f 0C       		.uleb128 0xc
+ 2190 0140 11       		.uleb128 0x11
+ 2191 0141 01       		.uleb128 0x1
+ 2192 0142 12       		.uleb128 0x12
+ 2193 0143 01       		.uleb128 0x1
+ 2194 0144 40       		.uleb128 0x40
+ 2195 0145 06       		.uleb128 0x6
+ 2196 0146 01       		.uleb128 0x1
+ 2197 0147 13       		.uleb128 0x13
+ 2198 0148 00       		.byte	0
+ 2199 0149 00       		.byte	0
+ 2200 014a 1B       		.uleb128 0x1b
+ 2201 014b 1D       		.uleb128 0x1d
+ 2202 014c 01       		.byte	0x1
+ 2203 014d 31       		.uleb128 0x31
+ 2204 014e 13       		.uleb128 0x13
+ 2205 014f 52       		.uleb128 0x52
+ 2206 0150 01       		.uleb128 0x1
+ 2207 0151 55       		.uleb128 0x55
+ 2208 0152 06       		.uleb128 0x6
+ 2209 0153 58       		.uleb128 0x58
+ 2210 0154 0B       		.uleb128 0xb
+ 2211 0155 59       		.uleb128 0x59
+ 2212 0156 0B       		.uleb128 0xb
+ 2213 0157 00       		.byte	0
+ 2214 0158 00       		.byte	0
+ARM GAS  /tmp/ccJAudan.s 			page 40
+
+
+ 2215 0159 1C       		.uleb128 0x1c
+ 2216 015a 0B       		.uleb128 0xb
+ 2217 015b 01       		.byte	0x1
+ 2218 015c 55       		.uleb128 0x55
+ 2219 015d 06       		.uleb128 0x6
+ 2220 015e 00       		.byte	0
+ 2221 015f 00       		.byte	0
+ 2222 0160 1D       		.uleb128 0x1d
+ 2223 0161 34       		.uleb128 0x34
+ 2224 0162 00       		.byte	0
+ 2225 0163 31       		.uleb128 0x31
+ 2226 0164 13       		.uleb128 0x13
+ 2227 0165 02       		.uleb128 0x2
+ 2228 0166 0A       		.uleb128 0xa
+ 2229 0167 00       		.byte	0
+ 2230 0168 00       		.byte	0
+ 2231 0169 1E       		.uleb128 0x1e
+ 2232 016a 05       		.uleb128 0x5
+ 2233 016b 00       		.byte	0
+ 2234 016c 31       		.uleb128 0x31
+ 2235 016d 13       		.uleb128 0x13
+ 2236 016e 02       		.uleb128 0x2
+ 2237 016f 0A       		.uleb128 0xa
+ 2238 0170 00       		.byte	0
+ 2239 0171 00       		.byte	0
+ 2240 0172 1F       		.uleb128 0x1f
+ 2241 0173 2E       		.uleb128 0x2e
+ 2242 0174 00       		.byte	0
+ 2243 0175 3F       		.uleb128 0x3f
+ 2244 0176 0C       		.uleb128 0xc
+ 2245 0177 03       		.uleb128 0x3
+ 2246 0178 0E       		.uleb128 0xe
+ 2247 0179 3A       		.uleb128 0x3a
+ 2248 017a 0B       		.uleb128 0xb
+ 2249 017b 3B       		.uleb128 0x3b
+ 2250 017c 05       		.uleb128 0x5
+ 2251 017d 27       		.uleb128 0x27
+ 2252 017e 0C       		.uleb128 0xc
+ 2253 017f 11       		.uleb128 0x11
+ 2254 0180 01       		.uleb128 0x1
+ 2255 0181 12       		.uleb128 0x12
+ 2256 0182 01       		.uleb128 0x1
+ 2257 0183 40       		.uleb128 0x40
+ 2258 0184 06       		.uleb128 0x6
+ 2259 0185 00       		.byte	0
+ 2260 0186 00       		.byte	0
+ 2261 0187 20       		.uleb128 0x20
+ 2262 0188 2E       		.uleb128 0x2e
+ 2263 0189 01       		.byte	0x1
+ 2264 018a 3F       		.uleb128 0x3f
+ 2265 018b 0C       		.uleb128 0xc
+ 2266 018c 03       		.uleb128 0x3
+ 2267 018d 0E       		.uleb128 0xe
+ 2268 018e 3A       		.uleb128 0x3a
+ 2269 018f 0B       		.uleb128 0xb
+ 2270 0190 3B       		.uleb128 0x3b
+ 2271 0191 05       		.uleb128 0x5
+ARM GAS  /tmp/ccJAudan.s 			page 41
+
+
+ 2272 0192 27       		.uleb128 0x27
+ 2273 0193 0C       		.uleb128 0xc
+ 2274 0194 11       		.uleb128 0x11
+ 2275 0195 01       		.uleb128 0x1
+ 2276 0196 12       		.uleb128 0x12
+ 2277 0197 01       		.uleb128 0x1
+ 2278 0198 40       		.uleb128 0x40
+ 2279 0199 06       		.uleb128 0x6
+ 2280 019a 01       		.uleb128 0x1
+ 2281 019b 13       		.uleb128 0x13
+ 2282 019c 00       		.byte	0
+ 2283 019d 00       		.byte	0
+ 2284 019e 21       		.uleb128 0x21
+ 2285 019f 05       		.uleb128 0x5
+ 2286 01a0 00       		.byte	0
+ 2287 01a1 03       		.uleb128 0x3
+ 2288 01a2 0E       		.uleb128 0xe
+ 2289 01a3 3A       		.uleb128 0x3a
+ 2290 01a4 0B       		.uleb128 0xb
+ 2291 01a5 3B       		.uleb128 0x3b
+ 2292 01a6 05       		.uleb128 0x5
+ 2293 01a7 49       		.uleb128 0x49
+ 2294 01a8 13       		.uleb128 0x13
+ 2295 01a9 02       		.uleb128 0x2
+ 2296 01aa 06       		.uleb128 0x6
+ 2297 01ab 00       		.byte	0
+ 2298 01ac 00       		.byte	0
+ 2299 01ad 22       		.uleb128 0x22
+ 2300 01ae 34       		.uleb128 0x34
+ 2301 01af 00       		.byte	0
+ 2302 01b0 03       		.uleb128 0x3
+ 2303 01b1 08       		.uleb128 0x8
+ 2304 01b2 3A       		.uleb128 0x3a
+ 2305 01b3 0B       		.uleb128 0xb
+ 2306 01b4 3B       		.uleb128 0x3b
+ 2307 01b5 05       		.uleb128 0x5
+ 2308 01b6 49       		.uleb128 0x49
+ 2309 01b7 13       		.uleb128 0x13
+ 2310 01b8 00       		.byte	0
+ 2311 01b9 00       		.byte	0
+ 2312 01ba 23       		.uleb128 0x23
+ 2313 01bb 34       		.uleb128 0x34
+ 2314 01bc 00       		.byte	0
+ 2315 01bd 03       		.uleb128 0x3
+ 2316 01be 0E       		.uleb128 0xe
+ 2317 01bf 3A       		.uleb128 0x3a
+ 2318 01c0 0B       		.uleb128 0xb
+ 2319 01c1 3B       		.uleb128 0x3b
+ 2320 01c2 05       		.uleb128 0x5
+ 2321 01c3 49       		.uleb128 0x49
+ 2322 01c4 13       		.uleb128 0x13
+ 2323 01c5 02       		.uleb128 0x2
+ 2324 01c6 06       		.uleb128 0x6
+ 2325 01c7 00       		.byte	0
+ 2326 01c8 00       		.byte	0
+ 2327 01c9 24       		.uleb128 0x24
+ 2328 01ca 0B       		.uleb128 0xb
+ARM GAS  /tmp/ccJAudan.s 			page 42
+
+
+ 2329 01cb 01       		.byte	0x1
+ 2330 01cc 11       		.uleb128 0x11
+ 2331 01cd 01       		.uleb128 0x1
+ 2332 01ce 12       		.uleb128 0x12
+ 2333 01cf 01       		.uleb128 0x1
+ 2334 01d0 00       		.byte	0
+ 2335 01d1 00       		.byte	0
+ 2336 01d2 25       		.uleb128 0x25
+ 2337 01d3 2E       		.uleb128 0x2e
+ 2338 01d4 01       		.byte	0x1
+ 2339 01d5 3F       		.uleb128 0x3f
+ 2340 01d6 0C       		.uleb128 0xc
+ 2341 01d7 03       		.uleb128 0x3
+ 2342 01d8 0E       		.uleb128 0xe
+ 2343 01d9 3A       		.uleb128 0x3a
+ 2344 01da 0B       		.uleb128 0xb
+ 2345 01db 3B       		.uleb128 0x3b
+ 2346 01dc 05       		.uleb128 0x5
+ 2347 01dd 27       		.uleb128 0x27
+ 2348 01de 0C       		.uleb128 0xc
+ 2349 01df 11       		.uleb128 0x11
+ 2350 01e0 01       		.uleb128 0x1
+ 2351 01e1 12       		.uleb128 0x12
+ 2352 01e2 01       		.uleb128 0x1
+ 2353 01e3 40       		.uleb128 0x40
+ 2354 01e4 0A       		.uleb128 0xa
+ 2355 01e5 01       		.uleb128 0x1
+ 2356 01e6 13       		.uleb128 0x13
+ 2357 01e7 00       		.byte	0
+ 2358 01e8 00       		.byte	0
+ 2359 01e9 26       		.uleb128 0x26
+ 2360 01ea 34       		.uleb128 0x34
+ 2361 01eb 00       		.byte	0
+ 2362 01ec 03       		.uleb128 0x3
+ 2363 01ed 0E       		.uleb128 0xe
+ 2364 01ee 3A       		.uleb128 0x3a
+ 2365 01ef 0B       		.uleb128 0xb
+ 2366 01f0 3B       		.uleb128 0x3b
+ 2367 01f1 05       		.uleb128 0x5
+ 2368 01f2 49       		.uleb128 0x49
+ 2369 01f3 13       		.uleb128 0x13
+ 2370 01f4 3F       		.uleb128 0x3f
+ 2371 01f5 0C       		.uleb128 0xc
+ 2372 01f6 3C       		.uleb128 0x3c
+ 2373 01f7 0C       		.uleb128 0xc
+ 2374 01f8 00       		.byte	0
+ 2375 01f9 00       		.byte	0
+ 2376 01fa 27       		.uleb128 0x27
+ 2377 01fb 34       		.uleb128 0x34
+ 2378 01fc 00       		.byte	0
+ 2379 01fd 03       		.uleb128 0x3
+ 2380 01fe 0E       		.uleb128 0xe
+ 2381 01ff 3A       		.uleb128 0x3a
+ 2382 0200 0B       		.uleb128 0xb
+ 2383 0201 3B       		.uleb128 0x3b
+ 2384 0202 0B       		.uleb128 0xb
+ 2385 0203 49       		.uleb128 0x49
+ARM GAS  /tmp/ccJAudan.s 			page 43
+
+
+ 2386 0204 13       		.uleb128 0x13
+ 2387 0205 3F       		.uleb128 0x3f
+ 2388 0206 0C       		.uleb128 0xc
+ 2389 0207 02       		.uleb128 0x2
+ 2390 0208 0A       		.uleb128 0xa
+ 2391 0209 00       		.byte	0
+ 2392 020a 00       		.byte	0
+ 2393 020b 00       		.byte	0
+ 2394              		.section	.debug_loc,"",%progbits
+ 2395              	.Ldebug_loc0:
+ 2396              	.LLST0:
+ 2397 0000 00000000 		.4byte	.LFB119
+ 2398 0004 02000000 		.4byte	.LCFI0
+ 2399 0008 0200     		.2byte	0x2
+ 2400 000a 7D       		.byte	0x7d
+ 2401 000b 00       		.sleb128 0
+ 2402 000c 02000000 		.4byte	.LCFI0
+ 2403 0010 64000000 		.4byte	.LFE119
+ 2404 0014 0200     		.2byte	0x2
+ 2405 0016 7D       		.byte	0x7d
+ 2406 0017 10       		.sleb128 16
+ 2407 0018 00000000 		.4byte	0
+ 2408 001c 00000000 		.4byte	0
+ 2409              	.LLST1:
+ 2410 0020 00000000 		.4byte	.LFB120
+ 2411 0024 02000000 		.4byte	.LCFI1
+ 2412 0028 0200     		.2byte	0x2
+ 2413 002a 7D       		.byte	0x7d
+ 2414 002b 00       		.sleb128 0
+ 2415 002c 02000000 		.4byte	.LCFI1
+ 2416 0030 1C000000 		.4byte	.LFE120
+ 2417 0034 0200     		.2byte	0x2
+ 2418 0036 7D       		.byte	0x7d
+ 2419 0037 08       		.sleb128 8
+ 2420 0038 00000000 		.4byte	0
+ 2421 003c 00000000 		.4byte	0
+ 2422              	.LLST2:
+ 2423 0040 00000000 		.4byte	.LFB121
+ 2424 0044 06000000 		.4byte	.LCFI2
+ 2425 0048 0200     		.2byte	0x2
+ 2426 004a 7D       		.byte	0x7d
+ 2427 004b 00       		.sleb128 0
+ 2428 004c 06000000 		.4byte	.LCFI2
+ 2429 0050 10010000 		.4byte	.LFE121
+ 2430 0054 0200     		.2byte	0x2
+ 2431 0056 7D       		.byte	0x7d
+ 2432 0057 10       		.sleb128 16
+ 2433 0058 00000000 		.4byte	0
+ 2434 005c 00000000 		.4byte	0
+ 2435              	.LLST3:
+ 2436 0060 00000000 		.4byte	.LVL2
+ 2437 0064 1E000000 		.4byte	.LVL3
+ 2438 0068 0100     		.2byte	0x1
+ 2439 006a 50       		.byte	0x50
+ 2440 006b 1E000000 		.4byte	.LVL3
+ 2441 006f 26000000 		.4byte	.LVL5
+ 2442 0073 0100     		.2byte	0x1
+ARM GAS  /tmp/ccJAudan.s 			page 44
+
+
+ 2443 0075 54       		.byte	0x54
+ 2444 0076 CA000000 		.4byte	.LVL27
+ 2445 007a D0000000 		.4byte	.LVL28
+ 2446 007e 0100     		.2byte	0x1
+ 2447 0080 50       		.byte	0x50
+ 2448 0081 D0000000 		.4byte	.LVL28
+ 2449 0085 10010000 		.4byte	.LFE121
+ 2450 0089 0100     		.2byte	0x1
+ 2451 008b 54       		.byte	0x54
+ 2452 008c 00000000 		.4byte	0
+ 2453 0090 00000000 		.4byte	0
+ 2454              	.LLST4:
+ 2455 0094 42000000 		.4byte	.LVL6
+ 2456 0098 4C000000 		.4byte	.LVL7
+ 2457 009c 0200     		.2byte	0x2
+ 2458 009e 30       		.byte	0x30
+ 2459 009f 9F       		.byte	0x9f
+ 2460 00a0 4C000000 		.4byte	.LVL7
+ 2461 00a4 64000000 		.4byte	.LVL8
+ 2462 00a8 0100     		.2byte	0x1
+ 2463 00aa 52       		.byte	0x52
+ 2464 00ab 68000000 		.4byte	.LVL9
+ 2465 00af 72000000 		.4byte	.LVL10
+ 2466 00b3 0100     		.2byte	0x1
+ 2467 00b5 52       		.byte	0x52
+ 2468 00b6 76000000 		.4byte	.LVL11
+ 2469 00ba 7C000000 		.4byte	.LVL13
+ 2470 00be 0100     		.2byte	0x1
+ 2471 00c0 52       		.byte	0x52
+ 2472 00c1 90000000 		.4byte	.LVL14
+ 2473 00c5 B6000000 		.4byte	.LVL21
+ 2474 00c9 0100     		.2byte	0x1
+ 2475 00cb 52       		.byte	0x52
+ 2476 00cc BA000000 		.4byte	.LVL22
+ 2477 00d0 C0000000 		.4byte	.LVL24
+ 2478 00d4 0100     		.2byte	0x1
+ 2479 00d6 52       		.byte	0x52
+ 2480 00d7 C4000000 		.4byte	.LVL25
+ 2481 00db CA000000 		.4byte	.LVL27
+ 2482 00df 0100     		.2byte	0x1
+ 2483 00e1 52       		.byte	0x52
+ 2484 00e2 00000000 		.4byte	0
+ 2485 00e6 00000000 		.4byte	0
+ 2486              	.LLST5:
+ 2487 00ea 00000000 		.4byte	.LFB122
+ 2488 00ee 02000000 		.4byte	.LCFI3
+ 2489 00f2 0200     		.2byte	0x2
+ 2490 00f4 7D       		.byte	0x7d
+ 2491 00f5 00       		.sleb128 0
+ 2492 00f6 02000000 		.4byte	.LCFI3
+ 2493 00fa 38000000 		.4byte	.LFE122
+ 2494 00fe 0200     		.2byte	0x2
+ 2495 0100 7D       		.byte	0x7d
+ 2496 0101 08       		.sleb128 8
+ 2497 0102 00000000 		.4byte	0
+ 2498 0106 00000000 		.4byte	0
+ 2499              	.LLST6:
+ARM GAS  /tmp/ccJAudan.s 			page 45
+
+
+ 2500 010a 00000000 		.4byte	.LVL29
+ 2501 010e 08000000 		.4byte	.LVL30
+ 2502 0112 0100     		.2byte	0x1
+ 2503 0114 50       		.byte	0x50
+ 2504 0115 0A000000 		.4byte	.LVL31
+ 2505 0119 1C000000 		.4byte	.LVL32
+ 2506 011d 0100     		.2byte	0x1
+ 2507 011f 50       		.byte	0x50
+ 2508 0120 00000000 		.4byte	0
+ 2509 0124 00000000 		.4byte	0
+ 2510              	.LLST7:
+ 2511 0128 00000000 		.4byte	.LFB123
+ 2512 012c 02000000 		.4byte	.LCFI4
+ 2513 0130 0200     		.2byte	0x2
+ 2514 0132 7D       		.byte	0x7d
+ 2515 0133 00       		.sleb128 0
+ 2516 0134 02000000 		.4byte	.LCFI4
+ 2517 0138 36000000 		.4byte	.LFE123
+ 2518 013c 0200     		.2byte	0x2
+ 2519 013e 7D       		.byte	0x7d
+ 2520 013f 04       		.sleb128 4
+ 2521 0140 00000000 		.4byte	0
+ 2522 0144 00000000 		.4byte	0
+ 2523              	.LLST8:
+ 2524 0148 00000000 		.4byte	.LVL33
+ 2525 014c 0A000000 		.4byte	.LVL34
+ 2526 0150 0100     		.2byte	0x1
+ 2527 0152 50       		.byte	0x50
+ 2528 0153 00000000 		.4byte	0
+ 2529 0157 00000000 		.4byte	0
+ 2530              	.LLST9:
+ 2531 015b 00000000 		.4byte	.LVL33
+ 2532 015f 22000000 		.4byte	.LVL37
+ 2533 0163 0100     		.2byte	0x1
+ 2534 0165 51       		.byte	0x51
+ 2535 0166 00000000 		.4byte	0
+ 2536 016a 00000000 		.4byte	0
+ 2537              	.LLST10:
+ 2538 016e 00000000 		.4byte	.LVL33
+ 2539 0172 1A000000 		.4byte	.LVL35
+ 2540 0176 0100     		.2byte	0x1
+ 2541 0178 52       		.byte	0x52
+ 2542 0179 00000000 		.4byte	0
+ 2543 017d 00000000 		.4byte	0
+ 2544              	.LLST11:
+ 2545 0181 1E000000 		.4byte	.LVL36
+ 2546 0185 32000000 		.4byte	.LVL38
+ 2547 0189 0700     		.2byte	0x7
+ 2548 018b 72       		.byte	0x72
+ 2549 018c 00       		.sleb128 0
+ 2550 018d 40       		.byte	0x40
+ 2551 018e 24       		.byte	0x24
+ 2552 018f 40       		.byte	0x40
+ 2553 0190 25       		.byte	0x25
+ 2554 0191 9F       		.byte	0x9f
+ 2555 0192 00000000 		.4byte	0
+ 2556 0196 00000000 		.4byte	0
+ARM GAS  /tmp/ccJAudan.s 			page 46
+
+
+ 2557              	.LLST12:
+ 2558 019a 00000000 		.4byte	.LVL39
+ 2559 019e 0C000000 		.4byte	.LVL40
+ 2560 01a2 0100     		.2byte	0x1
+ 2561 01a4 50       		.byte	0x50
+ 2562 01a5 00000000 		.4byte	0
+ 2563 01a9 00000000 		.4byte	0
+ 2564              	.LLST13:
+ 2565 01ad 00000000 		.4byte	.LVL39
+ 2566 01b1 18000000 		.4byte	.LVL41
+ 2567 01b5 0100     		.2byte	0x1
+ 2568 01b7 51       		.byte	0x51
+ 2569 01b8 00000000 		.4byte	0
+ 2570 01bc 00000000 		.4byte	0
+ 2571              		.section	.debug_aranges,"",%progbits
+ 2572 0000 44000000 		.4byte	0x44
+ 2573 0004 0200     		.2byte	0x2
+ 2574 0006 00000000 		.4byte	.Ldebug_info0
+ 2575 000a 04       		.byte	0x4
+ 2576 000b 00       		.byte	0
+ 2577 000c 0000     		.2byte	0
+ 2578 000e 0000     		.2byte	0
+ 2579 0010 00000000 		.4byte	.LFB119
+ 2580 0014 64000000 		.4byte	.LFE119-.LFB119
+ 2581 0018 00000000 		.4byte	.LFB120
+ 2582 001c 1C000000 		.4byte	.LFE120-.LFB120
+ 2583 0020 00000000 		.4byte	.LFB121
+ 2584 0024 10010000 		.4byte	.LFE121-.LFB121
+ 2585 0028 00000000 		.4byte	.LFB122
+ 2586 002c 38000000 		.4byte	.LFE122-.LFB122
+ 2587 0030 00000000 		.4byte	.LFB123
+ 2588 0034 36000000 		.4byte	.LFE123-.LFB123
+ 2589 0038 00000000 		.4byte	.LFB124
+ 2590 003c 20000000 		.4byte	.LFE124-.LFB124
+ 2591 0040 00000000 		.4byte	0
+ 2592 0044 00000000 		.4byte	0
+ 2593              		.section	.debug_ranges,"",%progbits
+ 2594              	.Ldebug_ranges0:
+ 2595 0000 02000000 		.4byte	.LBB4
+ 2596 0004 30000000 		.4byte	.LBE4
+ 2597 0008 38000000 		.4byte	.LBB7
+ 2598 000c 64000000 		.4byte	.LBE7
+ 2599 0010 00000000 		.4byte	0
+ 2600 0014 00000000 		.4byte	0
+ 2601 0018 02000000 		.4byte	.LBB5
+ 2602 001c 30000000 		.4byte	.LBE5
+ 2603 0020 38000000 		.4byte	.LBB6
+ 2604 0024 64000000 		.4byte	.LBE6
+ 2605 0028 00000000 		.4byte	0
+ 2606 002c 00000000 		.4byte	0
+ 2607 0030 00000000 		.4byte	.LFB119
+ 2608 0034 64000000 		.4byte	.LFE119
+ 2609 0038 00000000 		.4byte	.LFB120
+ 2610 003c 1C000000 		.4byte	.LFE120
+ 2611 0040 00000000 		.4byte	.LFB121
+ 2612 0044 10010000 		.4byte	.LFE121
+ 2613 0048 00000000 		.4byte	.LFB122
+ARM GAS  /tmp/ccJAudan.s 			page 47
+
+
+ 2614 004c 38000000 		.4byte	.LFE122
+ 2615 0050 00000000 		.4byte	.LFB123
+ 2616 0054 36000000 		.4byte	.LFE123
+ 2617 0058 00000000 		.4byte	.LFB124
+ 2618 005c 20000000 		.4byte	.LFE124
+ 2619 0060 00000000 		.4byte	0
+ 2620 0064 00000000 		.4byte	0
+ 2621              		.section	.debug_line,"",%progbits
+ 2622              	.Ldebug_line0:
+ 2623 0000 2F020000 		.section	.debug_str,"MS",%progbits,1
+ 2623      02003A01 
+ 2623      00000201 
+ 2623      FB0E0D00 
+ 2623      01010101 
+ 2624              	.LASF166:
+ 2625 0000 70776D63 		.ascii	"pwmchannel_t\000"
+ 2625      68616E6E 
+ 2625      656C5F74 
+ 2625      00
+ 2626              	.LASF124:
+ 2627 000d 41504231 		.ascii	"APB1LPENR\000"
+ 2627      4C50454E 
+ 2627      5200
+ 2628              	.LASF42:
+ 2629 0017 43414E31 		.ascii	"CAN1_RX0_IRQn\000"
+ 2629      5F525830 
+ 2629      5F495251 
+ 2629      6E00
+ 2630              	.LASF23:
+ 2631 0025 5056445F 		.ascii	"PVD_IRQn\000"
+ 2631      4952516E 
+ 2631      00
+ 2632              	.LASF86:
+ 2633 002e 43414E32 		.ascii	"CAN2_RX0_IRQn\000"
+ 2633      5F525830 
+ 2633      5F495251 
+ 2633      6E00
+ 2634              	.LASF190:
+ 2635 003c 70776D5F 		.ascii	"pwm_lld_serve_interrupt\000"
+ 2635      6C6C645F 
+ 2635      73657276 
+ 2635      655F696E 
+ 2635      74657272 
+ 2636              	.LASF95:
+ 2637 0054 49324333 		.ascii	"I2C3_ER_IRQn\000"
+ 2637      5F45525F 
+ 2637      4952516E 
+ 2637      00
+ 2638              	.LASF132:
+ 2639 0061 5F726573 		.ascii	"_resvd0\000"
+ 2639      76643000 
+ 2640              	.LASF133:
+ 2641 0069 5F726573 		.ascii	"_resvd1\000"
+ 2641      76643100 
+ 2642              	.LASF53:
+ 2643 0071 49324331 		.ascii	"I2C1_EV_IRQn\000"
+ 2643      5F45565F 
+ARM GAS  /tmp/ccJAudan.s 			page 48
+
+
+ 2643      4952516E 
+ 2643      00
+ 2644              	.LASF137:
+ 2645 007e 5F726573 		.ascii	"_resvd3\000"
+ 2645      76643300 
+ 2646              	.LASF138:
+ 2647 0086 5F726573 		.ascii	"_resvd4\000"
+ 2647      76643400 
+ 2648              	.LASF139:
+ 2649 008e 5F726573 		.ascii	"_resvd5\000"
+ 2649      76643500 
+ 2650              	.LASF141:
+ 2651 0096 5F726573 		.ascii	"_resvd6\000"
+ 2651      76643600 
+ 2652              	.LASF143:
+ 2653 009e 5F726573 		.ascii	"_resvd7\000"
+ 2653      76643700 
+ 2654              	.LASF145:
+ 2655 00a6 5F726573 		.ascii	"_resvd8\000"
+ 2655      76643800 
+ 2656              	.LASF146:
+ 2657 00ae 5F726573 		.ascii	"_resvd9\000"
+ 2657      76643900 
+ 2658              	.LASF162:
+ 2659 00b6 70657269 		.ascii	"period\000"
+ 2659      6F6400
+ 2660              	.LASF149:
+ 2661 00bd 5F726573 		.ascii	"_resvd11\000"
+ 2661      76643131 
+ 2661      00
+ 2662              	.LASF150:
+ 2663 00c6 5F726573 		.ascii	"_resvd12\000"
+ 2663      76643132 
+ 2663      00
+ 2664              	.LASF43:
+ 2665 00cf 43414E31 		.ascii	"CAN1_RX1_IRQn\000"
+ 2665      5F525831 
+ 2665      5F495251 
+ 2665      6E00
+ 2666              	.LASF152:
+ 2667 00dd 5F726573 		.ascii	"_resvd13\000"
+ 2667      76643133 
+ 2667      00
+ 2668              	.LASF12:
+ 2669 00e6 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2669      206C6F6E 
+ 2669      6720756E 
+ 2669      7369676E 
+ 2669      65642069 
+ 2670              	.LASF63:
+ 2671 00fd 5254435F 		.ascii	"RTC_Alarm_IRQn\000"
+ 2671      416C6172 
+ 2671      6D5F4952 
+ 2671      516E00
+ 2672              	.LASF56:
+ 2673 010c 49324332 		.ascii	"I2C2_ER_IRQn\000"
+ 2673      5F45525F 
+ARM GAS  /tmp/ccJAudan.s 			page 49
+
+
+ 2673      4952516E 
+ 2673      00
+ 2674              	.LASF52:
+ 2675 0119 54494D34 		.ascii	"TIM4_IRQn\000"
+ 2675      5F495251 
+ 2675      6E00
+ 2676              	.LASF25:
+ 2677 0123 5254435F 		.ascii	"RTC_WKUP_IRQn\000"
+ 2677      574B5550 
+ 2677      5F495251 
+ 2677      6E00
+ 2678              	.LASF22:
+ 2679 0131 57574447 		.ascii	"WWDG_IRQn\000"
+ 2679      5F495251 
+ 2679      6E00
+ 2680              	.LASF171:
+ 2681 013b 66726571 		.ascii	"frequency\000"
+ 2681      75656E63 
+ 2681      7900
+ 2682              	.LASF120:
+ 2683 0145 41484231 		.ascii	"AHB1LPENR\000"
+ 2683      4C50454E 
+ 2683      5200
+ 2684              	.LASF157:
+ 2685 014f 50574D5F 		.ascii	"PWM_READY\000"
+ 2685      52454144 
+ 2685      5900
+ 2686              	.LASF140:
+ 2687 0159 43434D52 		.ascii	"CCMR1\000"
+ 2687      3100
+ 2688              	.LASF142:
+ 2689 015f 43434D52 		.ascii	"CCMR2\000"
+ 2689      3200
+ 2690              	.LASF11:
+ 2691 0165 6C6F6E67 		.ascii	"long long int\000"
+ 2691      206C6F6E 
+ 2691      6720696E 
+ 2691      7400
+ 2692              	.LASF1:
+ 2693 0173 7369676E 		.ascii	"signed char\000"
+ 2693      65642063 
+ 2693      68617200 
+ 2694              	.LASF87:
+ 2695 017f 43414E32 		.ascii	"CAN2_RX1_IRQn\000"
+ 2695      5F525831 
+ 2695      5F495251 
+ 2695      6E00
+ 2696              	.LASF106:
+ 2697 018d 41484231 		.ascii	"AHB1RSTR\000"
+ 2697      52535452 
+ 2697      00
+ 2698              	.LASF165:
+ 2699 0196 70776D6D 		.ascii	"pwmmode_t\000"
+ 2699      6F64655F 
+ 2699      7400
+ 2700              	.LASF91:
+ 2701 01a0 444D4132 		.ascii	"DMA2_Stream6_IRQn\000"
+ARM GAS  /tmp/ccJAudan.s 			page 50
+
+
+ 2701      5F537472 
+ 2701      65616D36 
+ 2701      5F495251 
+ 2701      6E00
+ 2702              	.LASF147:
+ 2703 01b2 5F726573 		.ascii	"_resvd10\000"
+ 2703      76643130 
+ 2703      00
+ 2704              	.LASF160:
+ 2705 01bb 73746174 		.ascii	"state\000"
+ 2705      6500
+ 2706              	.LASF172:
+ 2707 01c1 6368616E 		.ascii	"channels\000"
+ 2707      6E656C73 
+ 2707      00
+ 2708              	.LASF8:
+ 2709 01ca 6C6F6E67 		.ascii	"long int\000"
+ 2709      20696E74 
+ 2709      00
+ 2710              	.LASF153:
+ 2711 01d3 5F726573 		.ascii	"_resvd14\000"
+ 2711      76643134 
+ 2711      00
+ 2712              	.LASF175:
+ 2713 01dc 70776D5F 		.ascii	"pwm_lld_start\000"
+ 2713      6C6C645F 
+ 2713      73746172 
+ 2713      7400
+ 2714              	.LASF111:
+ 2715 01ea 41504232 		.ascii	"APB2RSTR\000"
+ 2715      52535452 
+ 2715      00
+ 2716              	.LASF38:
+ 2717 01f3 444D4131 		.ascii	"DMA1_Stream5_IRQn\000"
+ 2717      5F537472 
+ 2717      65616D35 
+ 2717      5F495251 
+ 2717      6E00
+ 2718              	.LASF45:
+ 2719 0205 45585449 		.ascii	"EXTI9_5_IRQn\000"
+ 2719      395F355F 
+ 2719      4952516E 
+ 2719      00
+ 2720              	.LASF144:
+ 2721 0212 43434552 		.ascii	"CCER\000"
+ 2721      00
+ 2722              	.LASF84:
+ 2723 0217 4554485F 		.ascii	"ETH_WKUP_IRQn\000"
+ 2723      574B5550 
+ 2723      5F495251 
+ 2723      6E00
+ 2724              	.LASF5:
+ 2725 0225 75696E74 		.ascii	"uint16_t\000"
+ 2725      31365F74 
+ 2725      00
+ 2726              	.LASF69:
+ 2727 022e 444D4131 		.ascii	"DMA1_Stream7_IRQn\000"
+ARM GAS  /tmp/ccJAudan.s 			page 51
+
+
+ 2727      5F537472 
+ 2727      65616D37 
+ 2727      5F495251 
+ 2727      6E00
+ 2728              	.LASF76:
+ 2729 0240 54494D36 		.ascii	"TIM6_DAC_IRQn\000"
+ 2729      5F444143 
+ 2729      5F495251 
+ 2729      6E00
+ 2730              	.LASF104:
+ 2731 024e 504C4C43 		.ascii	"PLLCFGR\000"
+ 2731      46475200 
+ 2732              	.LASF74:
+ 2733 0256 55415254 		.ascii	"UART4_IRQn\000"
+ 2733      345F4952 
+ 2733      516E00
+ 2734              	.LASF64:
+ 2735 0261 4F54475F 		.ascii	"OTG_FS_WKUP_IRQn\000"
+ 2735      46535F57 
+ 2735      4B55505F 
+ 2735      4952516E 
+ 2735      00
+ 2736              	.LASF90:
+ 2737 0272 444D4132 		.ascii	"DMA2_Stream5_IRQn\000"
+ 2737      5F537472 
+ 2737      65616D35 
+ 2737      5F495251 
+ 2737      6E00
+ 2738              	.LASF66:
+ 2739 0284 54494D38 		.ascii	"TIM8_UP_TIM13_IRQn\000"
+ 2739      5F55505F 
+ 2739      54494D31 
+ 2739      335F4952 
+ 2739      516E00
+ 2740              	.LASF185:
+ 2741 0297 50574D44 		.ascii	"PWMD4\000"
+ 2741      3400
+ 2742              	.LASF174:
+ 2743 029d 56656374 		.ascii	"VectorB8\000"
+ 2743      6F724238 
+ 2743      00
+ 2744              	.LASF107:
+ 2745 02a6 41484232 		.ascii	"AHB2RSTR\000"
+ 2745      52535452 
+ 2745      00
+ 2746              	.LASF16:
+ 2747 02af 42757346 		.ascii	"BusFault_IRQn\000"
+ 2747      61756C74 
+ 2747      5F495251 
+ 2747      6E00
+ 2748              	.LASF68:
+ 2749 02bd 54494D38 		.ascii	"TIM8_CC_IRQn\000"
+ 2749      5F43435F 
+ 2749      4952516E 
+ 2749      00
+ 2750              	.LASF20:
+ 2751 02ca 50656E64 		.ascii	"PendSV_IRQn\000"
+ARM GAS  /tmp/ccJAudan.s 			page 52
+
+
+ 2751      53565F49 
+ 2751      52516E00 
+ 2752              	.LASF92:
+ 2753 02d6 444D4132 		.ascii	"DMA2_Stream7_IRQn\000"
+ 2753      5F537472 
+ 2753      65616D37 
+ 2753      5F495251 
+ 2753      6E00
+ 2754              	.LASF148:
+ 2755 02e8 42445452 		.ascii	"BDTR\000"
+ 2755      00
+ 2756              	.LASF0:
+ 2757 02ed 756E7369 		.ascii	"unsigned int\000"
+ 2757      676E6564 
+ 2757      20696E74 
+ 2757      00
+ 2758              	.LASF36:
+ 2759 02fa 444D4131 		.ascii	"DMA1_Stream3_IRQn\000"
+ 2759      5F537472 
+ 2759      65616D33 
+ 2759      5F495251 
+ 2759      6E00
+ 2760              	.LASF39:
+ 2761 030c 444D4131 		.ascii	"DMA1_Stream6_IRQn\000"
+ 2761      5F537472 
+ 2761      65616D36 
+ 2761      5F495251 
+ 2761      6E00
+ 2762              	.LASF15:
+ 2763 031e 4D656D6F 		.ascii	"MemoryManagement_IRQn\000"
+ 2763      72794D61 
+ 2763      6E616765 
+ 2763      6D656E74 
+ 2763      5F495251 
+ 2764              	.LASF94:
+ 2765 0334 49324333 		.ascii	"I2C3_EV_IRQn\000"
+ 2765      5F45565F 
+ 2765      4952516E 
+ 2765      00
+ 2766              	.LASF10:
+ 2767 0341 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2767      20756E73 
+ 2767      69676E65 
+ 2767      6420696E 
+ 2767      7400
+ 2768              	.LASF131:
+ 2769 0353 5243435F 		.ascii	"RCC_TypeDef\000"
+ 2769      54797065 
+ 2769      44656600 
+ 2770              	.LASF96:
+ 2771 035f 4F54475F 		.ascii	"OTG_HS_EP1_OUT_IRQn\000"
+ 2771      48535F45 
+ 2771      50315F4F 
+ 2771      55545F49 
+ 2771      52516E00 
+ 2772              	.LASF71:
+ 2773 0373 5344494F 		.ascii	"SDIO_IRQn\000"
+ARM GAS  /tmp/ccJAudan.s 			page 53
+
+
+ 2773      5F495251 
+ 2773      6E00
+ 2774              	.LASF180:
+ 2775 037d 77696474 		.ascii	"width\000"
+ 2775      6800
+ 2776              	.LASF18:
+ 2777 0383 53564361 		.ascii	"SVCall_IRQn\000"
+ 2777      6C6C5F49 
+ 2777      52516E00 
+ 2778              	.LASF134:
+ 2779 038f 534D4352 		.ascii	"SMCR\000"
+ 2779      00
+ 2780              	.LASF80:
+ 2781 0394 444D4132 		.ascii	"DMA2_Stream2_IRQn\000"
+ 2781      5F537472 
+ 2781      65616D32 
+ 2781      5F495251 
+ 2781      6E00
+ 2782              	.LASF130:
+ 2783 03a6 504C4C49 		.ascii	"PLLI2SCFGR\000"
+ 2783      32534346 
+ 2783      475200
+ 2784              	.LASF41:
+ 2785 03b1 43414E31 		.ascii	"CAN1_TX_IRQn\000"
+ 2785      5F54585F 
+ 2785      4952516E 
+ 2785      00
+ 2786              	.LASF108:
+ 2787 03be 41484233 		.ascii	"AHB3RSTR\000"
+ 2787      52535452 
+ 2787      00
+ 2788              	.LASF62:
+ 2789 03c7 45585449 		.ascii	"EXTI15_10_IRQn\000"
+ 2789      31355F31 
+ 2789      305F4952 
+ 2789      516E00
+ 2790              	.LASF57:
+ 2791 03d6 53504931 		.ascii	"SPI1_IRQn\000"
+ 2791      5F495251 
+ 2791      6E00
+ 2792              	.LASF169:
+ 2793 03e0 63616C6C 		.ascii	"callback\000"
+ 2793      6261636B 
+ 2793      00
+ 2794              	.LASF154:
+ 2795 03e9 73746D33 		.ascii	"stm32_tim_t\000"
+ 2795      325F7469 
+ 2795      6D5F7400 
+ 2796              	.LASF125:
+ 2797 03f5 41504232 		.ascii	"APB2LPENR\000"
+ 2797      4C50454E 
+ 2797      5200
+ 2798              	.LASF181:
+ 2799 03ff 63636572 		.ascii	"ccer\000"
+ 2799      00
+ 2800              	.LASF65:
+ 2801 0404 54494D38 		.ascii	"TIM8_BRK_TIM12_IRQn\000"
+ARM GAS  /tmp/ccJAudan.s 			page 54
+
+
+ 2801      5F42524B 
+ 2801      5F54494D 
+ 2801      31325F49 
+ 2801      52516E00 
+ 2802              	.LASF177:
+ 2803 0418 70776D70 		.ascii	"pwmp\000"
+ 2803      00
+ 2804              	.LASF21:
+ 2805 041d 53797354 		.ascii	"SysTick_IRQn\000"
+ 2805      69636B5F 
+ 2805      4952516E 
+ 2805      00
+ 2806              	.LASF49:
+ 2807 042a 54494D31 		.ascii	"TIM1_CC_IRQn\000"
+ 2807      5F43435F 
+ 2807      4952516E 
+ 2807      00
+ 2808              	.LASF67:
+ 2809 0437 54494D38 		.ascii	"TIM8_TRG_COM_TIM14_IRQn\000"
+ 2809      5F545247 
+ 2809      5F434F4D 
+ 2809      5F54494D 
+ 2809      31345F49 
+ 2810              	.LASF189:
+ 2811 044f 4952516E 		.ascii	"IRQn\000"
+ 2811      00
+ 2812              	.LASF83:
+ 2813 0454 4554485F 		.ascii	"ETH_IRQn\000"
+ 2813      4952516E 
+ 2813      00
+ 2814              	.LASF47:
+ 2815 045d 54494D31 		.ascii	"TIM1_UP_TIM10_IRQn\000"
+ 2815      5F55505F 
+ 2815      54494D31 
+ 2815      305F4952 
+ 2815      516E00
+ 2816              	.LASF81:
+ 2817 0470 444D4132 		.ascii	"DMA2_Stream3_IRQn\000"
+ 2817      5F537472 
+ 2817      65616D33 
+ 2817      5F495251 
+ 2817      6E00
+ 2818              	.LASF37:
+ 2819 0482 444D4131 		.ascii	"DMA1_Stream4_IRQn\000"
+ 2819      5F537472 
+ 2819      65616D34 
+ 2819      5F495251 
+ 2819      6E00
+ 2820              	.LASF93:
+ 2821 0494 55534152 		.ascii	"USART6_IRQn\000"
+ 2821      54365F49 
+ 2821      52516E00 
+ 2822              	.LASF72:
+ 2823 04a0 54494D35 		.ascii	"TIM5_IRQn\000"
+ 2823      5F495251 
+ 2823      6E00
+ 2824              	.LASF31:
+ARM GAS  /tmp/ccJAudan.s 			page 55
+
+
+ 2825 04aa 45585449 		.ascii	"EXTI3_IRQn\000"
+ 2825      335F4952 
+ 2825      516E00
+ 2826              	.LASF58:
+ 2827 04b5 53504932 		.ascii	"SPI2_IRQn\000"
+ 2827      5F495251 
+ 2827      6E00
+ 2828              	.LASF35:
+ 2829 04bf 444D4131 		.ascii	"DMA1_Stream2_IRQn\000"
+ 2829      5F537472 
+ 2829      65616D32 
+ 2829      5F495251 
+ 2829      6E00
+ 2830              	.LASF85:
+ 2831 04d1 43414E32 		.ascii	"CAN2_TX_IRQn\000"
+ 2831      5F54585F 
+ 2831      4952516E 
+ 2831      00
+ 2832              	.LASF121:
+ 2833 04de 41484232 		.ascii	"AHB2LPENR\000"
+ 2833      4C50454E 
+ 2833      5200
+ 2834              	.LASF110:
+ 2835 04e8 41504231 		.ascii	"APB1RSTR\000"
+ 2835      52535452 
+ 2835      00
+ 2836              	.LASF187:
+ 2837 04f1 2E2E2F2E 		.ascii	"../../os/hal/platforms/STM32/pwm_lld.c\000"
+ 2837      2E2F6F73 
+ 2837      2F68616C 
+ 2837      2F706C61 
+ 2837      74666F72 
+ 2838              	.LASF99:
+ 2839 0518 4F54475F 		.ascii	"OTG_HS_IRQn\000"
+ 2839      48535F49 
+ 2839      52516E00 
+ 2840              	.LASF188:
+ 2841 0524 2F686F6D 		.ascii	"/home/craig/dev/git/ChibiOS/demos/CANitM\000"
+ 2841      652F6372 
+ 2841      6169672F 
+ 2841      6465762F 
+ 2841      6769742F 
+ 2842              	.LASF164:
+ 2843 054d 70776D63 		.ascii	"pwmcallback_t\000"
+ 2843      616C6C62 
+ 2843      61636B5F 
+ 2843      7400
+ 2844              	.LASF109:
+ 2845 055b 52455345 		.ascii	"RESERVED0\000"
+ 2845      52564544 
+ 2845      3000
+ 2846              	.LASF112:
+ 2847 0565 52455345 		.ascii	"RESERVED1\000"
+ 2847      52564544 
+ 2847      3100
+ 2848              	.LASF116:
+ 2849 056f 52455345 		.ascii	"RESERVED2\000"
+ARM GAS  /tmp/ccJAudan.s 			page 56
+
+
+ 2849      52564544 
+ 2849      3200
+ 2850              	.LASF119:
+ 2851 0579 52455345 		.ascii	"RESERVED3\000"
+ 2851      52564544 
+ 2851      3300
+ 2852              	.LASF123:
+ 2853 0583 52455345 		.ascii	"RESERVED4\000"
+ 2853      52564544 
+ 2853      3400
+ 2854              	.LASF126:
+ 2855 058d 52455345 		.ascii	"RESERVED5\000"
+ 2855      52564544 
+ 2855      3500
+ 2856              	.LASF128:
+ 2857 0597 52455345 		.ascii	"RESERVED6\000"
+ 2857      52564544 
+ 2857      3600
+ 2858              	.LASF73:
+ 2859 05a1 53504933 		.ascii	"SPI3_IRQn\000"
+ 2859      5F495251 
+ 2859      6E00
+ 2860              	.LASF82:
+ 2861 05ab 444D4132 		.ascii	"DMA2_Stream4_IRQn\000"
+ 2861      5F537472 
+ 2861      65616D34 
+ 2861      5F495251 
+ 2861      6E00
+ 2862              	.LASF70:
+ 2863 05bd 46534D43 		.ascii	"FSMC_IRQn\000"
+ 2863      5F495251 
+ 2863      6E00
+ 2864              	.LASF7:
+ 2865 05c7 696E7433 		.ascii	"int32_t\000"
+ 2865      325F7400 
+ 2866              	.LASF2:
+ 2867 05cf 756E7369 		.ascii	"unsigned char\000"
+ 2867      676E6564 
+ 2867      20636861 
+ 2867      7200
+ 2868              	.LASF46:
+ 2869 05dd 54494D31 		.ascii	"TIM1_BRK_TIM9_IRQn\000"
+ 2869      5F42524B 
+ 2869      5F54494D 
+ 2869      395F4952 
+ 2869      516E00
+ 2870              	.LASF184:
+ 2871 05f0 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2871      52784275 
+ 2871      66666572 
+ 2871      00
+ 2872              	.LASF32:
+ 2873 05fd 45585449 		.ascii	"EXTI4_IRQn\000"
+ 2873      345F4952 
+ 2873      516E00
+ 2874              	.LASF102:
+ 2875 0608 48415348 		.ascii	"HASH_RNG_IRQn\000"
+ARM GAS  /tmp/ccJAudan.s 			page 57
+
+
+ 2875      5F524E47 
+ 2875      5F495251 
+ 2875      6E00
+ 2876              	.LASF3:
+ 2877 0616 73686F72 		.ascii	"short int\000"
+ 2877      7420696E 
+ 2877      7400
+ 2878              	.LASF122:
+ 2879 0620 41484233 		.ascii	"AHB3LPENR\000"
+ 2879      4C50454E 
+ 2879      5200
+ 2880              	.LASF75:
+ 2881 062a 55415254 		.ascii	"UART5_IRQn\000"
+ 2881      355F4952 
+ 2881      516E00
+ 2882              	.LASF48:
+ 2883 0635 54494D31 		.ascii	"TIM1_TRG_COM_TIM11_IRQn\000"
+ 2883      5F545247 
+ 2883      5F434F4D 
+ 2883      5F54494D 
+ 2883      31315F49 
+ 2884              	.LASF6:
+ 2885 064d 73686F72 		.ascii	"short unsigned int\000"
+ 2885      7420756E 
+ 2885      7369676E 
+ 2885      65642069 
+ 2885      6E7400
+ 2886              	.LASF30:
+ 2887 0660 45585449 		.ascii	"EXTI2_IRQn\000"
+ 2887      325F4952 
+ 2887      516E00
+ 2888              	.LASF118:
+ 2889 066b 41504232 		.ascii	"APB2ENR\000"
+ 2889      454E5200 
+ 2890              	.LASF179:
+ 2891 0673 6368616E 		.ascii	"channel\000"
+ 2891      6E656C00 
+ 2892              	.LASF115:
+ 2893 067b 41484233 		.ascii	"AHB3ENR\000"
+ 2893      454E5200 
+ 2894              	.LASF26:
+ 2895 0683 464C4153 		.ascii	"FLASH_IRQn\000"
+ 2895      485F4952 
+ 2895      516E00
+ 2896              	.LASF176:
+ 2897 068e 70776D5F 		.ascii	"pwm_lld_stop\000"
+ 2897      6C6C645F 
+ 2897      73746F70 
+ 2897      00
+ 2898              	.LASF89:
+ 2899 069b 4F54475F 		.ascii	"OTG_FS_IRQn\000"
+ 2899      46535F49 
+ 2899      52516E00 
+ 2900              	.LASF9:
+ 2901 06a7 75696E74 		.ascii	"uint32_t\000"
+ 2901      33325F74 
+ 2901      00
+ARM GAS  /tmp/ccJAudan.s 			page 58
+
+
+ 2902              	.LASF60:
+ 2903 06b0 55534152 		.ascii	"USART2_IRQn\000"
+ 2903      54325F49 
+ 2903      52516E00 
+ 2904              	.LASF17:
+ 2905 06bc 55736167 		.ascii	"UsageFault_IRQn\000"
+ 2905      65466175 
+ 2905      6C745F49 
+ 2905      52516E00 
+ 2906              	.LASF173:
+ 2907 06cc 50574D43 		.ascii	"PWMConfig\000"
+ 2907      6F6E6669 
+ 2907      6700
+ 2908              	.LASF135:
+ 2909 06d6 5F726573 		.ascii	"_resvd2\000"
+ 2909      76643200 
+ 2910              	.LASF178:
+ 2911 06de 70776D5F 		.ascii	"pwm_lld_enable_channel\000"
+ 2911      6C6C645F 
+ 2911      656E6162 
+ 2911      6C655F63 
+ 2911      68616E6E 
+ 2912              	.LASF156:
+ 2913 06f5 50574D5F 		.ascii	"PWM_STOP\000"
+ 2913      53544F50 
+ 2913      00
+ 2914              	.LASF13:
+ 2915 06fe 63686172 		.ascii	"char\000"
+ 2915      00
+ 2916              	.LASF168:
+ 2917 0703 6D6F6465 		.ascii	"mode\000"
+ 2917      00
+ 2918              	.LASF101:
+ 2919 0708 43525950 		.ascii	"CRYP_IRQn\000"
+ 2919      5F495251 
+ 2919      6E00
+ 2920              	.LASF161:
+ 2921 0712 636F6E66 		.ascii	"config\000"
+ 2921      696700
+ 2922              	.LASF151:
+ 2923 0719 444D4152 		.ascii	"DMAR\000"
+ 2923      00
+ 2924              	.LASF77:
+ 2925 071e 54494D37 		.ascii	"TIM7_IRQn\000"
+ 2925      5F495251 
+ 2925      6E00
+ 2926              	.LASF34:
+ 2927 0728 444D4131 		.ascii	"DMA1_Stream1_IRQn\000"
+ 2927      5F537472 
+ 2927      65616D31 
+ 2927      5F495251 
+ 2927      6E00
+ 2928              	.LASF97:
+ 2929 073a 4F54475F 		.ascii	"OTG_HS_EP1_IN_IRQn\000"
+ 2929      48535F45 
+ 2929      50315F49 
+ 2929      4E5F4952 
+ARM GAS  /tmp/ccJAudan.s 			page 59
+
+
+ 2929      516E00
+ 2930              	.LASF14:
+ 2931 074d 4E6F6E4D 		.ascii	"NonMaskableInt_IRQn\000"
+ 2931      61736B61 
+ 2931      626C6549 
+ 2931      6E745F49 
+ 2931      52516E00 
+ 2932              	.LASF117:
+ 2933 0761 41504231 		.ascii	"APB1ENR\000"
+ 2933      454E5200 
+ 2934              	.LASF114:
+ 2935 0769 41484232 		.ascii	"AHB2ENR\000"
+ 2935      454E5200 
+ 2936              	.LASF24:
+ 2937 0771 54414D50 		.ascii	"TAMP_STAMP_IRQn\000"
+ 2937      5F535441 
+ 2937      4D505F49 
+ 2937      52516E00 
+ 2938              	.LASF186:
+ 2939 0781 474E5520 		.ascii	"GNU C 4.6.2 20111004 (prerelease)\000"
+ 2939      4320342E 
+ 2939      362E3220 
+ 2939      32303131 
+ 2939      31303034 
+ 2940              	.LASF170:
+ 2941 07a3 50574D43 		.ascii	"PWMChannelConfig\000"
+ 2941      68616E6E 
+ 2941      656C436F 
+ 2941      6E666967 
+ 2941      00
+ 2942              	.LASF19:
+ 2943 07b4 44656275 		.ascii	"DebugMonitor_IRQn\000"
+ 2943      674D6F6E 
+ 2943      69746F72 
+ 2943      5F495251 
+ 2943      6E00
+ 2944              	.LASF78:
+ 2945 07c6 444D4132 		.ascii	"DMA2_Stream0_IRQn\000"
+ 2945      5F537472 
+ 2945      65616D30 
+ 2945      5F495251 
+ 2945      6E00
+ 2946              	.LASF55:
+ 2947 07d8 49324332 		.ascii	"I2C2_EV_IRQn\000"
+ 2947      5F45565F 
+ 2947      4952516E 
+ 2947      00
+ 2948              	.LASF61:
+ 2949 07e5 55534152 		.ascii	"USART3_IRQn\000"
+ 2949      54335F49 
+ 2949      52516E00 
+ 2950              	.LASF129:
+ 2951 07f1 53534347 		.ascii	"SSCGR\000"
+ 2951      5200
+ 2952              	.LASF50:
+ 2953 07f7 54494D32 		.ascii	"TIM2_IRQn\000"
+ 2953      5F495251 
+ARM GAS  /tmp/ccJAudan.s 			page 60
+
+
+ 2953      6E00
+ 2954              	.LASF28:
+ 2955 0801 45585449 		.ascii	"EXTI0_IRQn\000"
+ 2955      305F4952 
+ 2955      516E00
+ 2956              	.LASF59:
+ 2957 080c 55534152 		.ascii	"USART1_IRQn\000"
+ 2957      54315F49 
+ 2957      52516E00 
+ 2958              	.LASF127:
+ 2959 0818 42444352 		.ascii	"BDCR\000"
+ 2959      00
+ 2960              	.LASF4:
+ 2961 081d 75696E74 		.ascii	"uint8_t\000"
+ 2961      385F7400 
+ 2962              	.LASF159:
+ 2963 0825 50574D44 		.ascii	"PWMDriver\000"
+ 2963      72697665 
+ 2963      7200
+ 2964              	.LASF100:
+ 2965 082f 44434D49 		.ascii	"DCMI_IRQn\000"
+ 2965      5F495251 
+ 2965      6E00
+ 2966              	.LASF158:
+ 2967 0839 70776D73 		.ascii	"pwmstate_t\000"
+ 2967      74617465 
+ 2967      5F7400
+ 2968              	.LASF167:
+ 2969 0844 70776D63 		.ascii	"pwmcnt_t\000"
+ 2969      6E745F74 
+ 2969      00
+ 2970              	.LASF113:
+ 2971 084d 41484231 		.ascii	"AHB1ENR\000"
+ 2971      454E5200 
+ 2972              	.LASF136:
+ 2973 0855 44494552 		.ascii	"DIER\000"
+ 2973      00
+ 2974              	.LASF103:
+ 2975 085a 4650555F 		.ascii	"FPU_IRQn\000"
+ 2975      4952516E 
+ 2975      00
+ 2976              	.LASF105:
+ 2977 0863 43464752 		.ascii	"CFGR\000"
+ 2977      00
+ 2978              	.LASF183:
+ 2979 0868 70776D5F 		.ascii	"pwm_lld_disable_channel\000"
+ 2979      6C6C645F 
+ 2979      64697361 
+ 2979      626C655F 
+ 2979      6368616E 
+ 2980              	.LASF163:
+ 2981 0880 636C6F63 		.ascii	"clock\000"
+ 2981      6B00
+ 2982              	.LASF54:
+ 2983 0886 49324331 		.ascii	"I2C1_ER_IRQn\000"
+ 2983      5F45525F 
+ 2983      4952516E 
+ARM GAS  /tmp/ccJAudan.s 			page 61
+
+
+ 2983      00
+ 2984              	.LASF191:
+ 2985 0893 70776D5F 		.ascii	"pwm_lld_init\000"
+ 2985      6C6C645F 
+ 2985      696E6974 
+ 2985      00
+ 2986              	.LASF40:
+ 2987 08a0 4144435F 		.ascii	"ADC_IRQn\000"
+ 2987      4952516E 
+ 2987      00
+ 2988              	.LASF79:
+ 2989 08a9 444D4132 		.ascii	"DMA2_Stream1_IRQn\000"
+ 2989      5F537472 
+ 2989      65616D31 
+ 2989      5F495251 
+ 2989      6E00
+ 2990              	.LASF155:
+ 2991 08bb 50574D5F 		.ascii	"PWM_UNINIT\000"
+ 2991      554E494E 
+ 2991      495400
+ 2992              	.LASF44:
+ 2993 08c6 43414E31 		.ascii	"CAN1_SCE_IRQn\000"
+ 2993      5F534345 
+ 2993      5F495251 
+ 2993      6E00
+ 2994              	.LASF88:
+ 2995 08d4 43414E32 		.ascii	"CAN2_SCE_IRQn\000"
+ 2995      5F534345 
+ 2995      5F495251 
+ 2995      6E00
+ 2996              	.LASF27:
+ 2997 08e2 5243435F 		.ascii	"RCC_IRQn\000"
+ 2997      4952516E 
+ 2997      00
+ 2998              	.LASF98:
+ 2999 08eb 4F54475F 		.ascii	"OTG_HS_WKUP_IRQn\000"
+ 2999      48535F57 
+ 2999      4B55505F 
+ 2999      4952516E 
+ 2999      00
+ 3000              	.LASF51:
+ 3001 08fc 54494D33 		.ascii	"TIM3_IRQn\000"
+ 3001      5F495251 
+ 3001      6E00
+ 3002              	.LASF29:
+ 3003 0906 45585449 		.ascii	"EXTI1_IRQn\000"
+ 3003      315F4952 
+ 3003      516E00
+ 3004              	.LASF182:
+ 3005 0911 64696572 		.ascii	"dier\000"
+ 3005      00
+ 3006              	.LASF33:
+ 3007 0916 444D4131 		.ascii	"DMA1_Stream0_IRQn\000"
+ 3007      5F537472 
+ 3007      65616D30 
+ 3007      5F495251 
+ 3007      6E00
+ARM GAS  /tmp/ccJAudan.s 			page 62
+
+
+ 3008              		.ident	"GCC: (Linaro GCC 4.6-2011.10) 4.6.2 20111004 (prerelease)"
+ARM GAS  /tmp/ccJAudan.s 			page 63
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 pwm_lld.c
+     /tmp/ccJAudan.s:18     .text.VectorB8:0000000000000000 $t
+     /tmp/ccJAudan.s:24     .text.VectorB8:0000000000000000 VectorB8
+     /tmp/ccJAudan.s:117    .text.VectorB8:0000000000000060 $d
+     /tmp/ccJAudan.s:124    .text.pwm_lld_init:0000000000000000 $t
+     /tmp/ccJAudan.s:130    .text.pwm_lld_init:0000000000000000 pwm_lld_init
+     /tmp/ccJAudan.s:556    .bss.PWMD4:0000000000000000 .LANCHOR0
+     /tmp/ccJAudan.s:156    .text.pwm_lld_start:0000000000000000 $t
+     /tmp/ccJAudan.s:162    .text.pwm_lld_start:0000000000000000 pwm_lld_start
+     /tmp/ccJAudan.s:388    .text.pwm_lld_start:000000000000010c $d
+     /tmp/ccJAudan.s:393    .text.pwm_lld_stop:0000000000000000 $t
+     /tmp/ccJAudan.s:399    .text.pwm_lld_stop:0000000000000000 pwm_lld_stop
+     /tmp/ccJAudan.s:446    .text.pwm_lld_stop:0000000000000034 $d
+     /tmp/ccJAudan.s:451    .text.pwm_lld_enable_channel:0000000000000000 $t
+     /tmp/ccJAudan.s:457    .text.pwm_lld_enable_channel:0000000000000000 pwm_lld_enable_channel
+     /tmp/ccJAudan.s:519    .text.pwm_lld_disable_channel:0000000000000000 $t
+     /tmp/ccJAudan.s:525    .text.pwm_lld_disable_channel:0000000000000000 pwm_lld_disable_channel
+     /tmp/ccJAudan.s:559    .bss.PWMD4:0000000000000000 PWMD4
+     /tmp/ccJAudan.s:555    .bss.PWMD4:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+     /tmp/ccJAudan.s:123    .text.VectorB8:0000000000000064 $t
+     /tmp/ccJAudan.s:450    .text.pwm_lld_stop:0000000000000038 $t
+
+UNDEFINED SYMBOLS
+_port_irq_epilogue
+pwmObjectInit
+nvicEnableVector
+nvicDisableVector
